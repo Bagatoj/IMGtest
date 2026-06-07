@@ -1,11 +1,12 @@
 {
-  "name": "ironmarkgear-next-v114",
-  "version": "0.114.0",
+  "name": "ironmarkgear-next-v118-railway-ready",
+  "version": "0.118.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm install --include=dev --legacy-peer-deps",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
     "lint": "next lint"
   },
   "dependencies": {

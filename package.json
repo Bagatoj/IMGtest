@@ -1,25 +1,26 @@
 {
-  "name": "ironmarkgear-next-v118-railway-ready",
-  "version": "0.118.0",
+  "name": "ironmarkgear-next-v119-railway-ready",
+  "version": "0.119.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm install --include=dev --legacy-peer-deps",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p ${PORT:-3000}",
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "typescript": "latest"
+    "react-dom": "latest"
   },
   "engines": {
     "node": "20.x",
     "npm": "10.x"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
   }
 }

@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Location de matériel | IronMarkGear</title><style>
+:root{--bleu:#0878c9;--bleu-fonce:#004783;--jaune:#ffc928;--jaune-fonce:#d99a00;--texte:#1f2d3d;--fond:#f4f6f8;--bleu-nuit:#243646;}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fond);color:var(--texte)}.top-bar{height:28px;background:var(--bleu-nuit)}header{background:white;min-height:86px;padding:0 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 3px 16px rgba(0,0,0,.12);position:sticky;top:0;z-index:10}.logo{display:flex;align-items:center;gap:12px;font-size:24px}.logo-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--jaune),var(--jaune-fonce));color:white;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900}nav{display:flex;align-items:center;gap:28px}nav a{text-decoration:none;color:var(--texte);font-size:16px;font-weight:600}nav a:hover,nav a.active{color:#b77d00}nav a.btn-devis,nav a.btn-devis:hover{color:white}.btn-devis{background:linear-gradient(180deg,var(--jaune),var(--jaune-fonce));color:white;padding:14px 22px;border-radius:7px;box-shadow:0 5px 10px rgba(0,0,0,.18)}main{padding:44px 7% 64px}.hero{max-width:1180px;margin:0 auto 28px;display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:center}.hero h1{margin:0 0 12px;font-size:clamp(38px,5vw,62px);line-height:1.05}.hero h1 span{color:#b77d00}.hero p{margin:0;font-size:20px;color:#526171;line-height:1.5}.hero-card{background:white;border-top:8px solid var(--jaune);border-radius:18px;padding:18px;box-shadow:0 14px 32px rgba(30,40,50,.12)}.toolbar{max-width:1180px;margin:0 auto 22px;background:white;border-radius:18px;padding:18px;box-shadow:0 10px 24px rgba(30,40,50,.10);display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}input,select{width:100%;padding:14px 15px;border:1px solid #d4dce4;border-radius:10px;font:inherit;background:#fbfcfd}.catalogue{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:stretch}.machine-card{background:white;border-radius:18px;box-shadow:0 14px 32px rgba(30,40,50,.12);overflow:hidden;border-top:8px solid var(--jaune);height:100%}.machine-link{display:flex;flex-direction:column;color:inherit;text-decoration:none;height:100%}.machine-visual{height:285px;background:#fff8dc;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.machine-visual img{width:100%;height:100%;object-fit:contain;background:white;display:block;padding:18px}.status-badge{position:absolute;top:16px;right:16px;background:white;color:#856100;padding:10px 14px;border-radius:999px;font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.15)}.machine-content{padding:18px;display:flex;flex-direction:column;gap:14px;flex:1;justify-content:space-between}.machine-content h2{margin:0 0 10px;font-size:26px;line-height:1.15;min-height:60px}.machine-content p{margin:0;color:#526171;line-height:1.5;min-height:72px}.machine-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px}.machine-meta span{background:#fff8dc;border-left:5px solid var(--jaune);border-radius:10px;padding:12px;font-weight:900;color:#856100}.machine-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}.machine-actions span,.machine-actions button{border-radius:10px;padding:13px 14px;text-align:center;font-weight:900;min-height:48px;display:flex;align-items:center;justify-content:center}.machine-actions span{background:#eef5fb;color:var(--texte)}.machine-actions button{border:0;background:linear-gradient(180deg,var(--jaune),var(--jaune-fonce));color:white;cursor:pointer;font:inherit}.note{max-width:1180px;margin:22px auto 0;background:#eef5fb;border-left:6px solid var(--bleu);border-radius:14px;padding:18px;color:#425363;line-height:1.5}footer{margin-top:60px;background:var(--bleu-nuit);color:white;text-align:center;padding:24px 7%;font-size:14px}@media(max-width:950px){header{padding:18px 6%;flex-direction:column;gap:20px}nav{flex-wrap:wrap;justify-content:center}.hero,.toolbar,.catalogue{grid-template-columns:1fr}.machine-actions{grid-template-columns:1fr}}
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: #0f8a3b;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 900;
+  box-shadow: 0 14px 32px rgba(0,0,0,.22);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+  z-index: 9999;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: #c62828; }
+.toast.warning { background: #d98a00; }
+
+
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#fff06a 0%,#ffc107 42%,#c87800 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.48), inset 0 -10px 18px rgba(110,70,0,.25), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style><style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head><body class="theme-rental"><div class="top-bar"></div><header><div class="logo"><div class="logo-icon">IMG</div><div><strong>IronMark</strong>Gear</div></div><nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav></header><main><section class="hero"><div><h1>Location de <span>matériel</span></h1><p>Catalogue de machines disponibles à la location. Cliquez sur une machine pour consulter les tarifs, les conditions et réserver vos dates.</p></div><aside class="hero-card"><strong>Réservation simple</strong><p>Choisissez vos dates depuis la fiche machine, ajoutez au panier, puis envoyez votre demande.</p></aside></section><section class="toolbar"><input id="searchInput" type="search" placeholder="Rechercher une machine..." oninput="filterMachines()"><select id="categoryFilter" onchange="filterMachines()"><option value="">Toutes les catégories</option><option value="séchage">Séchage</option><option value="énergie">Énergie</option><option value="nettoyage">Nettoyage</option><option value="jardinage">Jardinage</option><option value="batteries">Batteries & accus</option></select><select id="statusFilter" onchange="filterMachines()"><option value="">Toutes disponibilités</option><option value="disponible">Disponible</option><option value="rupture">Rupture de stock</option></select></section><section class="catalogue" id="catalogue">
+      <article class="machine-card" data-name="déshumidificateur de chantier dryfast df800" data-category="séchage" data-status="disponible">
+        <a class="machine-link" href="dryfast-df800.html">
+          <div class="machine-visual">
+            <img src="https://www.toolnation.com/media/catalog/product/d/f/df800f.jpg?height=700&image-type=image&store=toolnation_en&width=700" alt="Déshumidificateur de chantier Dryfast DF800">
+            <div class="status-badge">Disponible</div>
+          </div>
+          <div class="machine-content">
+            <div><h2>Déshumidificateur de chantier Dryfast DF800</h2><p>Déshumidificateur professionnel pour assécher un chantier, un dégât des eaux, une chape, un plafonnage, une peinture ou un local très humide.</p></div>
+            <div class="machine-meta"><span>Séchage</span><span>à partir de 8,93 €/jour</span></div>
+            <div class="machine-actions">
+              <span>Voir les détails</span>
+              <button type="button" onclick="event.preventDefault(); addToCartQuote('dryfast-df800', `Déshumidificateur de chantier Dryfast DF800`, 'https://www.toolnation.com/media/catalog/product/d/f/df800f.jpg?height=700&image-type=image&store=toolnation_en&width=700')">Ajouter au panier pour un devis</button>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="générateur essence 3000 w" data-category="énergie" data-status="rupture">
+        <a class="machine-link" href="generateur-3000w.html">
+          <div class="machine-visual">
+            <img src="assets/generateur-3000w.png" alt="Générateur essence 3000 W">
+            <div class="status-badge out-of-stock">Rupture de stock<br>Disponible dès le 01/06</div>
+          </div>
+          <div class="machine-content">
+            <div><h2>Générateur essence 3000 W</h2><p>Générateur de courant à essence pour chantier, dépannage, événement ou alimentation temporaire de matériel.</p></div>
+            <div class="machine-meta"><span>Énergie</span><span>Retour prévu le 01/06</span></div>
+            <div class="machine-actions">
+              <span>Voir les détails</span>
+              <button type="button" onclick="event.preventDefault(); addToCartQuote('generateur-3000w', `Générateur essence 3000 W`, 'assets/generateur-3000w.png')">Ajouter au panier pour un devis</button>
+            </div>
+          </div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="karcher k5 nettoyeur haute pression" data-category="nettoyage" data-status="disponible">
+        <a class="machine-link" href="/produits/karcher-k5">
+          <div class="machine-visual"><img src="/assets/gallery/karcher-k5-1.png" alt="Karcher K5"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Kärcher K5</h2><p>Nettoyeur haute pression pour terrasses, allées, véhicules et nettoyage extérieur intensif.</p></div><div class="machine-meta"><span>Nettoyage</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('karcher-k5', `Kärcher K5`, '/assets/gallery/karcher-k5-1.png')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="tarrière makita accu batterie 4ah chargeur 2 ports" data-category="jardinage" data-status="disponible">
+        <a class="machine-link" href="/produits/tarriere-makita-accu">
+          <div class="machine-visual"><img src="/assets/tarriere-makita-accu.svg" alt="Tarrière Makita sur accu"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Tarrière Makita sur accu</h2><p>Tarrière sans fil pour perçage de trous de plantation ou piquets. Fournie avec 4 batteries 4Ah et un chargeur Makita 2 ports.</p></div><div class="machine-meta"><span>Jardinage</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('tarriere-makita-accu', `Tarrière Makita sur accu`, '/assets/tarriere-makita-accu.svg')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="motobineuse mtd t380 t 380" data-category="jardinage" data-status="disponible">
+        <a class="machine-link" href="/produits/motobineuse-mtd-t380">
+          <div class="machine-visual"><img src="/assets/motobineuse-mtd-t380.svg" alt="Motobineuse MTD T380"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Motobineuse MTD T380</h2><p>Motobineuse thermique pour préparation de sol, potager, massifs et travaux de jardin plus exigeants.</p></div><div class="machine-meta"><span>Jardinage</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('motobineuse-mtd-t380', `Motobineuse MTD T380`, '/assets/motobineuse-mtd-t380.svg')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="taille haie makita duh602 600mm batterie 4ah" data-category="jardinage" data-status="disponible">
+        <a class="machine-link" href="/produits/makita-duh602">
+          <div class="machine-visual"><img src="/assets/makita-duh602.svg" alt="Taille haie Makita DUH602 600mm"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Taille-haie Makita DUH602 600 mm</h2><p>Taille-haie sans fil 18 V avec lame de 600 mm. Fourni avec 2 batteries Makita 4Ah.</p></div><div class="machine-meta"><span>Jardinage</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('makita-duh602', `Taille-haie Makita DUH602 600 mm`, '/assets/makita-duh602.svg')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="batterie accu stihl ap300s ap 300 s" data-category="batteries" data-status="disponible">
+        <a class="machine-link" href="/produits/stihl-ap300s">
+          <div class="machine-visual"><img src="/assets/stihl-ap300s.svg" alt="Batterie STIHL AP300S"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Batterie ACCU Stihl AP300S</h2><p>Batterie professionnelle STIHL AP pour machines compatibles du système AP.</p></div><div class="machine-meta"><span>Batteries & accus</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('stihl-ap300s', `Batterie ACCU Stihl AP300S`, '/assets/stihl-ap300s.svg')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="batterie accu stihl ap500s ap 500 s" data-category="batteries" data-status="disponible">
+        <a class="machine-link" href="/produits/stihl-ap500s">
+          <div class="machine-visual"><img src="/assets/stihl-ap500s.svg" alt="Batterie STIHL AP500S"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Batterie ACCU Stihl AP500S</h2><p>Batterie haute capacité STIHL AP pour autonomie renforcée sur machines compatibles.</p></div><div class="machine-meta"><span>Batteries & accus</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('stihl-ap500s', `Batterie ACCU Stihl AP500S`, '/assets/stihl-ap500s.svg')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article>
+      <article class="machine-card" data-name="batterie accu makita 4ah 18v lxt" data-category="batteries" data-status="disponible">
+        <a class="machine-link" href="/produits/makita-batterie-4ah">
+          <div class="machine-visual"><img src="/assets/makita-batterie-4ah.svg" alt="Batterie ACCU Makita 4AH"><div class="status-badge">Disponible</div></div>
+          <div class="machine-content"><div><h2>Batterie ACCU Makita 4AH</h2><p>Batterie Makita 18 V 4Ah pour machines compatibles LXT.</p></div><div class="machine-meta"><span>Batteries & accus</span><span>Prix à définir</span></div><div class="machine-actions"><span>Voir les détails</span><button type="button" onclick="event.preventDefault(); addToCartQuote('makita-batterie-4ah', `Batterie ACCU Makita 4AH`, '/assets/makita-batterie-4ah.svg')">Ajouter au panier pour un devis</button></div></div>
+        </a>
+      </article></section><div class="note">Les quantités exactes de stock ne sont pas affichées publiquement. La disponibilité sera confirmée lors de la demande ou de la réservation.</div></main><footer>© 2026 IronMarkGear — Location de matériel</footer><script>
+
+function showToast(message, type="success") {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    toast.className = "toast";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.className = "toast show " + (type === "error" ? "error" : type === "warning" ? "warning" : "");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.className = "toast";
+  }, 2400);
+}
+function addToCartQuote(id,title,image){const cart=JSON.parse(localStorage.getItem("img_cart")||"[]");cart.push({lineId:Date.now().toString()+Math.random().toString(16).slice(2),id,title,image,quantity:1,quoteOnly:true,startDate:"",endDate:"",days:0,price:0,needsDuration:true});localStorage.setItem("img_cart",JSON.stringify(cart));showToast("Ajouté au devis ✓", "success");}
+function readFilters(){try{return JSON.parse(localStorage.getItem("img_location_filters")||"{}")}catch{return {}}}
+function saveFilters(){const data={search:document.getElementById("searchInput").value,category:document.getElementById("categoryFilter").value,status:document.getElementById("statusFilter").value};localStorage.setItem("img_location_filters",JSON.stringify(data));const params=new URLSearchParams();if(data.search)params.set("q",data.search);if(data.category)params.set("cat",data.category);if(data.status)params.set("status",data.status);history.replaceState(null,"",params.toString()?`?${params}`:location.pathname);}
+function restoreFilters(){const params=new URLSearchParams(location.search);const saved=readFilters();document.getElementById("searchInput").value=params.get("q")||saved.search||"";document.getElementById("categoryFilter").value=params.get("cat")||saved.category||"";document.getElementById("statusFilter").value=params.get("status")||saved.status||"";}
+function filterMachines(){const search=document.getElementById("searchInput").value.toLowerCase();const category=document.getElementById("categoryFilter").value;const status=document.getElementById("statusFilter").value;saveFilters();document.querySelectorAll(".machine-card").forEach(card=>{const okSearch=card.dataset.name.includes(search);const okCat=!category||card.dataset.category===category;const okStatus=!status||card.dataset.status===status;card.style.display=okSearch&&okCat&&okStatus?"block":"none";});}
+restoreFilters();filterMachines();</script>
+<script src="assets/js/app.js"></script>
+</body></html>

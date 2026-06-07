@@ -1,0 +1,352 @@
+{
+  "badge": {
+    "fr": "BÂTIMENT / RÉNOVATION",
+    "nl": "BOUW / RENOVATIE",
+    "en": "BUILDING / RENOVATION"
+  },
+  "titleBefore": {
+    "fr": "Des travaux de qualité, réalisés avec exigence et",
+    "nl": "Kwaliteitswerken, uitgevoerd met precisie en",
+    "en": "High-quality work, delivered with precision and"
+  },
+  "titleAccent": {
+    "fr": "savoir-faire",
+    "nl": "vakmanschap",
+    "en": "craftsmanship"
+  },
+  "description": {
+    "fr": "IronMarkGear vous accompagne dans vos projets de construction, rénovation et aménagement. Du premier échange aux finitions, nous avançons avec sérieux et transparence.",
+    "nl": "IronMarkGear begeleidt u bij bouw-, renovatie- en inrichtingsprojecten. Van het eerste gesprek tot de afwerking werken we zorgvuldig en transparant.",
+    "en": "IronMarkGear supports your construction, renovation and fitting-out projects. From the first discussion to the final finishes, we work with care and transparency."
+  },
+  "trustFeatures": [
+    {
+      "icon": "⌂",
+      "title": {
+        "fr": "Travaux garantis",
+        "nl": "Gegarandeerd werk",
+        "en": "Guaranteed work"
+      },
+      "text": {
+        "fr": "Qualité et durabilité assurées.",
+        "nl": "Kwaliteit en duurzaamheid verzekerd.",
+        "en": "Quality and durability assured."
+      }
+    },
+    {
+      "icon": "⛑",
+      "title": {
+        "fr": "Équipe qualifiée et expérimentée",
+        "nl": "Gekwalificeerd en ervaren team",
+        "en": "Qualified and experienced team"
+      },
+      "text": {
+        "fr": "Des professionnels à votre service.",
+        "nl": "Professionals tot uw dienst.",
+        "en": "Professionals at your service."
+      }
+    },
+    {
+      "icon": "✓",
+      "title": {
+        "fr": "Respect des délais et des budgets",
+        "nl": "Respect voor timing en budget",
+        "en": "Deadlines and budgets respected"
+      },
+      "text": {
+        "fr": "Un suivi rigoureux à chaque étape.",
+        "nl": "Strikte opvolging in elke fase.",
+        "en": "Careful follow-up at every stage."
+      }
+    },
+    {
+      "icon": "✆",
+      "title": {
+        "fr": "Conseils et suivi personnalisés",
+        "nl": "Advies en persoonlijke opvolging",
+        "en": "Personal advice and follow-up"
+      },
+      "text": {
+        "fr": "Un interlocuteur unique de A à Z.",
+        "nl": "Eén contactpersoon van A tot Z.",
+        "en": "One contact person from A to Z."
+      }
+    }
+  ],
+  "domainsTitle": {
+    "fr": "Nos domaines d’intervention",
+    "nl": "Onze interventiedomeinen",
+    "en": "Our areas of intervention"
+  },
+  "domains": [
+    {
+      "icon": "⌂",
+      "title": {
+        "fr": "Travaux généraux de rénovation",
+        "nl": "Algemene renovatiewerken",
+        "en": "General renovation work"
+      },
+      "text": {
+        "fr": "Rénovation complète ou partielle de votre habitation ou bâtiment.",
+        "nl": "Volledige of gedeeltelijke renovatie van woning of gebouw.",
+        "en": "Full or partial renovation of your home or building."
+      }
+    },
+    {
+      "icon": "▦",
+      "title": {
+        "fr": "Cuisine équipée",
+        "nl": "Ingerichte keuken",
+        "en": "Fitted kitchen"
+      },
+      "text": {
+        "fr": "Installation de cuisines modernes, pratiques et fonctionnelles.",
+        "nl": "Plaatsing van moderne, praktische en functionele keukens.",
+        "en": "Installation of modern, practical and functional kitchens."
+      }
+    },
+    {
+      "icon": "◴",
+      "title": {
+        "fr": "Salle de bain",
+        "nl": "Badkamer",
+        "en": "Bathroom"
+      },
+      "text": {
+        "fr": "Aménagement, rénovation et remise en état de salles de bain.",
+        "nl": "Inrichting, renovatie en herstel van badkamers.",
+        "en": "Bathroom fitting, renovation and refurbishment."
+      }
+    },
+    {
+      "icon": "▭",
+      "title": {
+        "fr": "Peinture",
+        "nl": "Schilderwerken",
+        "en": "Painting"
+      },
+      "text": {
+        "fr": "Peinture intérieure, finitions propres et remise en état.",
+        "nl": "Binnenschilderwerk, nette afwerking en herstelling.",
+        "en": "Interior painting, clean finishes and refurbishment."
+      }
+    },
+    {
+      "icon": "▧",
+      "title": {
+        "fr": "Pavage",
+        "nl": "Bestrating",
+        "en": "Paving"
+      },
+      "text": {
+        "fr": "Pose de pavés, klinkers, dalles, allées et terrasses.",
+        "nl": "Plaatsing van klinkers, tegels, opritten en terrassen.",
+        "en": "Pavers, slabs, driveways and terraces."
+      }
+    },
+    {
+      "icon": "▥",
+      "title": {
+        "fr": "Cloisons et faux plafonds",
+        "nl": "Wanden en valse plafonds",
+        "en": "Partitions and suspended ceilings"
+      },
+      "text": {
+        "fr": "Cloisons, isolation, faux plafonds et aménagements intérieurs.",
+        "nl": "Wanden, isolatie, valse plafonds en binneninrichting.",
+        "en": "Partitions, insulation, suspended ceilings and interior fittings."
+      }
+    },
+    {
+      "icon": "≈",
+      "title": {
+        "fr": "Réparation après dégâts des eaux",
+        "nl": "Herstel na waterschade",
+        "en": "Water damage repairs"
+      },
+      "text": {
+        "fr": "Intervention rapide, remise en état et finitions après sinistre.",
+        "nl": "Snelle interventie, herstel en afwerking na schade.",
+        "en": "Fast intervention, repair and finishing after damage."
+      }
+    }
+  ],
+  "priority": {
+    "title": {
+      "fr": "Votre projet, notre priorité.",
+      "nl": "Uw project, onze prioriteit.",
+      "en": "Your project, our priority."
+    },
+    "text": {
+      "fr": "Chaque chantier est unique. Nous mettons tout en œuvre pour comprendre vos besoins et vous offrir un résultat à la hauteur de vos attentes.",
+      "nl": "Elke werf is uniek. We doen er alles aan om uw noden te begrijpen en een resultaat te leveren dat aan uw verwachtingen voldoet.",
+      "en": "Every worksite is unique. We do everything needed to understand your needs and deliver a result that meets your expectations."
+    }
+  },
+  "priorityItems": [
+    {
+      "icon": "◇",
+      "title": {
+        "fr": "Accompagnement personnalisé",
+        "nl": "Persoonlijke begeleiding",
+        "en": "Personalized support"
+      },
+      "text": {
+        "fr": "De l’étude à la livraison.",
+        "nl": "Van analyse tot oplevering.",
+        "en": "From assessment to delivery."
+      }
+    },
+    {
+      "icon": "★",
+      "title": {
+        "fr": "Matériaux de qualité",
+        "nl": "Kwaliteitsmaterialen",
+        "en": "Quality materials"
+      },
+      "text": {
+        "fr": "Sélection rigoureuse.",
+        "nl": "Zorgvuldige selectie.",
+        "en": "Carefully selected."
+      }
+    },
+    {
+      "icon": "☑",
+      "title": {
+        "fr": "Devis clair et gratuit",
+        "nl": "Duidelijke en gratis offerte",
+        "en": "Clear free quote"
+      },
+      "text": {
+        "fr": "Réponse structurée selon votre projet.",
+        "nl": "Een gestructureerd antwoord volgens uw project.",
+        "en": "A structured response based on your project."
+      }
+    }
+  ],
+  "cta": {
+    "fr": "Demander un devis",
+    "nl": "Offerte aanvragen",
+    "en": "Request a quote"
+  },
+  "reviews": {
+    "title": {
+      "fr": "Avis clients bâtiment",
+      "nl": "Klantenbeoordelingen bouw",
+      "en": "Building customer reviews"
+    },
+    "intro": {
+      "fr": "Le profil professionnel bâtiment est récent : les premiers avis Ring Twice sont déjà disponibles et seront complétés au fil des chantiers.",
+      "nl": "Het professionele bouwprofiel is recent: de eerste Ring Twice-beoordelingen zijn al beschikbaar en worden aangevuld naarmate er nieuwe werven bijkomen.",
+      "en": "The professional building profile is new: the first Ring Twice reviews are already available and will grow as projects are completed."
+    },
+    "profileUrl": "https://ringtwice.be/fr/listworkers/489415-joakim-b",
+    "profileCta": {
+      "fr": "Voir le profil Ring Twice",
+      "nl": "Ring Twice-profiel bekijken",
+      "en": "View Ring Twice profile"
+    },
+    "rating": {
+      "value": "5/5",
+      "label": {
+        "fr": "Note actuelle du profil professionnel",
+        "nl": "Huidige score van het professionele profiel",
+        "en": "Current rating on the professional profile"
+      },
+      "count": "2",
+      "countLabel": {
+        "fr": "évaluations clients",
+        "nl": "klantenbeoordelingen",
+        "en": "customer reviews"
+      },
+      "verified": {
+        "fr": "Profil vérifié",
+        "nl": "Geverifieerd profiel",
+        "en": "Verified profile"
+      },
+      "verifiedText": {
+        "fr": "Identité et téléphone vérifiés",
+        "nl": "Identiteit en telefoon geverifieerd",
+        "en": "ID and phone verified"
+      }
+    },
+    "galleryTitle": {
+      "fr": "Photos Ring Twice",
+      "nl": "Ring Twice-foto's",
+      "en": "Ring Twice photos"
+    },
+    "photos": [
+      {
+        "src": "https://cidoum.s3.amazonaws.com/processed_images/03ff3ab0-ff89-468d-89a3-4766d460dc49-medium.webp",
+        "alt": {
+          "fr": "Avant peinture après dégâts des eaux",
+          "nl": "Voor schilderwerk na waterschade",
+          "en": "Before painting after water damage"
+        }
+      },
+      {
+        "src": "https://cidoum.s3.amazonaws.com/processed_images/2bb2a85d-aede-469d-8ecf-ae5691750598-medium.webp",
+        "alt": {
+          "fr": "Après remise en état du plafond",
+          "nl": "Na herstel van het plafond",
+          "en": "After ceiling repair"
+        }
+      },
+      {
+        "src": "https://cidoum.s3.amazonaws.com/processed_images/06b6711c-0e3c-4194-9774-3f75055fa11c-medium.webp",
+        "alt": {
+          "fr": "Plafond abîmé avant intervention",
+          "nl": "Beschadigd plafond vóór interventie",
+          "en": "Damaged ceiling before work"
+        }
+      },
+      {
+        "src": "https://cidoum.s3.amazonaws.com/processed_images/0f26c280-351c-4e0b-b03b-904551bb642b-medium.webp",
+        "alt": {
+          "fr": "Plafond remis en état",
+          "nl": "Hersteld plafond",
+          "en": "Restored ceiling"
+        }
+      },
+      {
+        "src": "https://cidoum.s3.amazonaws.com/processed_images/c1360522-47c9-4769-b654-33df0c1d2401-medium.webp",
+        "alt": {
+          "fr": "Travaux de rénovation intérieure",
+          "nl": "Binnenrenovatie",
+          "en": "Interior renovation work"
+        }
+      }
+    ],
+    "clientReviews": [
+      {
+        "job": {
+          "fr": "Rénovation peinture plafond d’une salle de bain suite à dégâts des eaux",
+          "nl": "Schilderrenovatie van een badkamerplafond na waterschade",
+          "en": "Bathroom ceiling painting renovation after water damage"
+        },
+        "text": {
+          "fr": "Bon service, bonne communication, fiable",
+          "nl": "Goede service, goede communicatie, betrouwbaar",
+          "en": "Good service, good communication, reliable"
+        },
+        "author": "Robert P.",
+        "date": "04/05/2026"
+      },
+      {
+        "job": {
+          "fr": "Remplacement lampes et test électrique",
+          "nl": "Vervanging van lampen en elektrische test",
+          "en": "Lamp replacement and electrical test"
+        },
+        "text": {
+          "fr": "Parfait travail de Joakim et il a su répondre à mes attentes. Il est aussi très flexible. Encore merci pour tout.",
+          "nl": "Perfect werk van Joakim en hij voldeed aan mijn verwachtingen. Hij is ook heel flexibel. Nogmaals bedankt voor alles.",
+          "en": "Perfect work from Joakim and he met my expectations. He is also very flexible. Thanks again for everything."
+        },
+        "author": "Regis P.",
+        "date": "24/02/2026"
+      }
+    ]
+  }
+}
+/* v116 placeholders for new before/after photos added */

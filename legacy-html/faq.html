@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | IronMarkGear</title>
+
+  <style>
+    :root {
+      --bleu: #0878c9;
+      --accent: #0878c9;
+      --accent-fonce: #004783;
+      --bleu-fonce: #004783;
+      --jaune: #ffc928;
+      --vert: #39a935;
+      --vert-fonce: #006b38;
+      --texte: #1f2d3d;
+      --fond: #f4f6f8;
+      --blanc: #ffffff;
+      --bleu-nuit: #243646;
+    }
+
+    * { box-sizing: border-box; }
+body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+    }
+
+    .top-bar {
+      height: 28px;
+      background: var(--bleu-nuit);
+    }
+
+    header {
+      background: var(--blanc);
+      min-height: 86px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--bleu-nuit));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texte);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.btn-devis,
+    nav a.btn-devis.active,
+    nav a.btn-devis:hover {
+      color: white;
+    }
+
+    .btn-devis,
+    .btn-devis.active {
+      background: var(--accent);
+      color: white;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 7px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    main {
+      padding: 44px 7% 64px;
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 20px;
+      color: #526171;
+      line-height: 1.5;
+    }
+
+    .faq-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      gap: 22px;
+    }
+
+    .faq-section {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 14px 32px rgba(30, 40, 50, 0.10);
+    }
+
+    .faq-section h2 {
+      margin: 0 0 18px;
+      font-size: 30px;
+      color: var(--texte);
+    }
+
+    .faq-blue h2 {
+      color: var(--bleu);
+    }
+
+    .faq-yellow h2 {
+      color: #c58a00;
+    }
+
+    .faq-green h2 {
+      color: var(--vert-fonce);
+    }
+
+    .faq-common h2 {
+      color: var(--accent);
+    }
+
+    .faq-blue {
+      border-top: 8px solid var(--bleu);
+    }
+
+    .faq-yellow {
+      border-top: 8px solid var(--jaune);
+    }
+
+    .faq-green {
+      border-top: 8px solid var(--vert);
+    }
+
+    .faq-common {
+      border-top: 8px solid var(--accent);
+    }
+
+    .faq-blue details {
+      border-left: 5px solid var(--bleu);
+    }
+
+    .faq-yellow details {
+      border-left: 5px solid var(--jaune);
+    }
+
+    .faq-green details {
+      border-left: 5px solid var(--vert);
+    }
+
+    .faq-common details {
+      border-left: 5px solid var(--accent);
+    }
+
+    .faq-blue summary::after {
+      color: var(--bleu);
+    }
+
+    .faq-yellow summary::after {
+      color: #c58a00;
+    }
+
+    .faq-green summary::after {
+      color: var(--vert-fonce);
+    }
+
+    .faq-common summary::after {
+      color: var(--accent);
+    }
+
+    details {
+      border: 1px solid #d9e2ea;
+      border-radius: 12px;
+      padding: 0;
+      margin-bottom: 12px;
+      background: #fbfcfd;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 18px 20px;
+      font-weight: 900;
+      color: var(--texte);
+      list-style: none;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      font-size: 24px;
+      color: var(--accent-fonce);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    details p {
+      margin: 0;
+      padding: 0 20px 18px;
+      color: #526171;
+      line-height: 1.55;
+    }
+
+    .cta {
+      max-width: 1120px;
+      margin: 34px auto 0;
+      background: linear-gradient(135deg, var(--accent), var(--accent-fonce));
+      color: white;
+      border-radius: 18px;
+      padding: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      box-shadow: 0 16px 36px rgba(0, 90, 40, 0.22);
+    }
+
+    .cta h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .cta p {
+      margin: 0;
+      opacity: .95;
+      line-height: 1.5;
+    }
+
+    .cta a {
+      flex: 0 0 auto;
+      background: white;
+      color: var(--accent-fonce);
+      padding: 16px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: var(--bleu-nuit);
+      color: white;
+      text-align: center;
+      padding: 24px 7%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      header {
+        padding: 22px 6%;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta a {
+        text-align: center;
+      }
+    }
+  
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#5fc5ff 0%,#1e73be 42%,#003b73 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -10px 18px rgba(0,0,0,.22), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style>
+<style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="theme-common">
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">IMG</div>
+      <div><strong>IronMark</strong>Gear</div>
+    </div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a class="active" href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>FAQ</h1>
+      <p>Les réponses aux questions les plus fréquentes concernant les travaux, la location de matériel et l’entretien des espaces verts.</p>
+    </section>
+
+    <section class="faq-layout">
+      <div class="faq-section faq-common">
+        <h2>FAQ général</h2>
+
+        <details open>
+          <summary>Comment faire une demande efficacement ?</summary>
+          <p>Le plus simple est d’envoyer un message écrit, idéalement sur WhatsApp, avec le type de demande, la commune, quelques photos, les dimensions approximatives et les délais souhaités.</p>
+        </details>
+
+        <details>
+          <summary>Puis-je appeler directement ?</summary>
+          <p>Les messages sont prioritaires afin de garder une trace claire de la demande. Si nécessaire, je vous recontacterai moi-même par téléphone.</p>
+        </details>
+
+        <details>
+          <summary>Dois-je envoyer des photos ?</summary>
+          <p>Oui, si possible. Les photos permettent de mieux comprendre le travail à réaliser, d’éviter les malentendus et de préparer une réponse plus précise.</p>
+        </details>
+        <details>
+          <summary>Quelles informations dois-je envoyer dans mon message ?</summary>
+          <p>Indiquez le type de service souhaité, la commune, les dimensions approximatives, les délais souhaités et ajoutez des photos si possible. Plus la demande est complète, plus la réponse pourra être précise.</p>
+        </details>
+
+        <details>
+          <summary>Quel est le meilleur moyen de contact ?</summary>
+          <p>Le contact par message est recommandé, idéalement via WhatsApp. Cela permet d’envoyer des photos, de garder une trace claire de la demande et d’éviter les oublis.</p>
+        </details>
+
+        <details>
+          <summary>Dans quel délai puis-je recevoir une réponse ?</summary>
+          <p>Les demandes sont traitées dès que possible. Le délai de réponse peut varier selon l’activité, l’urgence de la demande et les informations fournies.</p>
+        </details>
+
+      </div>
+
+      <div class="faq-section faq-blue">
+        <h2>Bâtiment</h2>
+
+        <details>
+          <summary>Quels types de travaux sont concernés ?</summary>
+          <p>La page bâtiment présentera les services de rénovation, aménagement, interventions intérieures et travaux selon les besoins du client.</p>
+        </details>
+
+        <details>
+          <summary>Comment demander un devis travaux ?</summary>
+          <p>Vous pouvez passer par la page contact avec un descriptif clair, des photos, la commune et les délais souhaités. Un échange permettra ensuite d’affiner la demande.</p>
+        </details>
+        <details>
+          <summary>Une visite est-elle nécessaire avant un devis ?</summary>
+          <p>Pour certains travaux, une visite ou un échange détaillé avec photos sera nécessaire afin de comprendre correctement la demande et les contraintes du chantier.</p>
+        </details>
+
+        <details>
+          <summary>Puis-je demander plusieurs types de travaux en même temps ?</summary>
+          <p>Oui. Vous pouvez regrouper plusieurs besoins dans une seule demande : peinture, rénovation, petits travaux, aménagement ou autre intervention liée au bâtiment.</p>
+        </details>
+
+        <details>
+          <summary>Les délais sont-ils garantis ?</summary>
+          <p>Les délais dépendent de la disponibilité, du type de demande et des contraintes du chantier. Une estimation pourra être donnée après analyse de la demande.</p>
+        </details>
+
+      </div>
+      <div class="faq-section faq-yellow">
+        <h2>Location</h2>
+
+        <details>
+          <summary>Le catalogue de location est-il déjà disponible ?</summary>
+          <p>Le catalogue complet sera ajouté dans une prochaine étape. Il comprendra les machines, les quantités disponibles, les disponibilités par date, la recherche et les filtres.</p>
+        </details>
+
+        <details>
+          <summary>Comment fonctionnera la disponibilité des machines ?</summary>
+          <p>Chaque outil aura un stock et un planning. Si une machine est déjà louée sur une période, le site indiquera la disponibilité restante ou la prochaine date possible.</p>
+        </details>
+
+        <details>
+          <summary>Pourrai-je réserver directement en ligne ?</summary>
+          <p>Oui. L’objectif est de permettre une demande de réservation en ligne, avec validation finale. Le client pourra aussi me contacter directement si nécessaire. Une gestion interne permettra d’encoder les locations faites hors site afin que le stock reste à jour.</p>
+        </details>
+        <details>
+          <summary>Le stock affiché sera-t-il mis à jour automatiquement ?</summary>
+          <p>L’objectif est que le stock tienne compte des réservations faites en ligne, mais aussi des locations encodées manuellement lorsque du matériel est réservé directement hors site.</p>
+        </details>
+
+        <details>
+          <summary>Pourrai-je connaître la prochaine disponibilité d’une machine ?</summary>
+          <p>Oui. Si une machine est déjà louée, le site devra pouvoir indiquer la prochaine date disponible afin que le client puisse anticiper sa réservation.</p>
+        </details>
+
+        <details>
+          <summary>Y aura-t-il une caution pour le matériel ?</summary>
+          <p>Les conditions de caution, de retour, de retard ou de casse seront précisées dans les fiches produits et dans les conditions de location lorsque le catalogue sera finalisé.</p>
+        </details>
+
+      </div>
+
+      <div class="faq-section faq-green">
+        <h2>Espace vert</h2>
+
+        <details>
+          <summary>Comment réserver une prestation d’espaces verts ?</summary>
+          <p>Vous pouvez me contacter via le site, par message/SMS ou directement via Ring Twice. Dans tous les cas, pour les prestations d’espaces verts, le paiement final passera par Ring Twice afin de centraliser et sécuriser la prestation.</p>
+        </details>
+
+        <details>
+          <summary>Faut-il créer un compte Ring Twice ?</summary>
+          <p>Oui, un compte Ring Twice sera nécessaire pour accéder au service et finaliser la demande de prestation.</p>
+        </details>
+
+        <details>
+          <summary>Un devis est-il possible avant intervention ?</summary>
+          <p>Oui. Si nécessaire, je peux venir évaluer le travail à réaliser avant la prestation. Le règlement final devra cependant passer par Ring Twice.</p>
+        </details>
+
+        <details>
+          <summary>Quelle est la zone d’intervention ?</summary>
+          <p>J’interviens principalement sur Bruxelles et les alentours. Selon la nature de la demande, le volume du chantier et l’organisation nécessaire, une intervention peut être étudiée ailleurs en Belgique.</p>
+        </details>
+        <details>
+          <summary>Quels travaux d’espaces verts sont possibles ?</summary>
+          <p>Les demandes peuvent concerner la tonte, la taille de haies, le débroussaillage, le nettoyage extérieur, la remise en état de jardin, la préparation de terrain ou encore la pose de gazon en rouleau. Cette liste n’est pas exhaustive : d’autres travaux extérieurs peuvent être étudiés selon la demande.</p>
+        </details>
+
+        <details>
+          <summary>Dois-je passer par Ring Twice pour un simple renseignement ?</summary>
+          <p>Non. Vous pouvez d’abord me contacter via le site, WhatsApp ou SMS pour obtenir une information. Pour la prestation finale d’espaces verts, le paiement passera par Ring Twice.</p>
+        </details>
+
+        <details>
+          <summary>Est-ce possible de faire une visite avant le travail ?</summary>
+          <p>Oui, si la demande le nécessite, une visite ou une estimation préalable peut être organisée afin d’évaluer correctement le travail à réaliser.</p>
+        </details>
+
+      </div>
+
+    </section>
+
+    <section class="cta">
+      <div>
+        <h2>Vous ne trouvez pas votre réponse ?</h2>
+        <p>Envoyez un message avec les informations essentielles, de préférence via WhatsApp.</p>
+      </div>
+      <a href="contact.html">Me contacter</a>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 IronMarkGear — FAQ
+  </footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

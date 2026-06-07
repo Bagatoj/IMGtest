@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réalisations | IronMarkGear</title>
+
+  <style>
+    :root {
+      --bleu: #0878c9;
+      --bleu-fonce: #004783;
+      --jaune: #ffc928;
+      --vert: #39a935;
+      --vert-fonce: #006b38;
+      --texte: #1f2d3d;
+      --fond: #f4f6f8;
+      --blanc: #ffffff;
+      --bleu-nuit: #243646;
+      --accent: #0878c9;
+      --accent-fonce: #004783;
+    }
+
+    * { box-sizing: border-box; }
+body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+    }
+
+    .top-bar { height: 28px; background: var(--bleu-nuit); }
+
+    header {
+      background: white;
+      min-height: 86px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 16px rgba(0,0,0,.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--bleu), var(--bleu-nuit));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texte);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a.active { color: var(--bleu); }
+
+    nav a.btn-devis,
+    nav a.btn-devis:hover {
+      color: white;
+    }
+
+    .btn-devis {
+      background: var(--bleu);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 7px;
+      box-shadow: 0 5px 10px rgba(0,0,0,.18);
+    }
+
+    main { padding: 44px 7% 64px; }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 20px;
+      color: #526171;
+      line-height: 1.5;
+    }
+
+    .tabs {
+      max-width: 1120px;
+      margin: 0 auto 28px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .tab {
+      border: 0;
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-size: 20px;
+      font-weight: 900;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(30,40,50,.14);
+    }
+
+    .tab.blue { background: linear-gradient(180deg, var(--bleu), var(--bleu-fonce)); }
+    .tab.green { background: linear-gradient(180deg, var(--vert), var(--vert-fonce)); }
+
+    .section {
+      max-width: 1120px;
+      margin: 0 auto 42px;
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 14px 32px rgba(30,40,50,.10);
+    }
+
+    
+
+    .section h2 {
+      margin: 0 0 20px;
+      font-size: 34px;
+    }
+
+
+    .carousel-shell {
+      position: relative;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: white;
+      color: var(--bleu-fonce);
+      font-size: 30px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.20);
+      z-index: 2;
+    }
+
+    .carousel-arrow:hover {
+      background: #eef5fb;
+    }
+
+    .carousel-arrow.left {
+      left: -22px;
+    }
+
+    .carousel-arrow.right {
+      right: -22px;
+    }
+
+    .carousel-arrow.hidden {
+      display: none;
+    }
+
+    .carousel-counter {
+      margin-top: 14px;
+      text-align: center;
+      color: #526171;
+      font-weight: 700;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(30,40,50,.12);
+      cursor: zoom-in;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .gallery img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(30,40,50,.20);
+    }
+
+    .placeholder {
+      background: #eef5fb;
+      border-left: 6px solid var(--bleu);
+      border-radius: 12px;
+      padding: 22px;
+      color: #425363;
+      line-height: 1.55;
+      font-size: 18px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,20,30,.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      z-index: 999;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: min(1100px, 94vw);
+      max-height: 88vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+    }
+
+    .close-btn,
+    .lightbox-nav {
+      position: absolute;
+      border: 0;
+      background: white;
+      color: var(--texte);
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    }
+
+    .close-btn {
+      top: 22px;
+      right: 28px;
+      width: 48px;
+      height: 48px;
+      font-size: 30px;
+    }
+
+    .lightbox-nav {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      font-size: 38px;
+    }
+
+    .lightbox-nav.prev { left: 28px; }
+    .lightbox-nav.next { right: 28px; }
+
+    footer {
+      margin-top: 60px;
+      background: var(--bleu-nuit);
+      color: white;
+      text-align: center;
+      padding: 24px 7%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      header {
+        padding: 22px 6%;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .tabs,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery img { height: 300px; }
+    }
+  
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#5fc5ff 0%,#1e73be 42%,#003b73 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -10px 18px rgba(0,0,0,.22), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style>
+<style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="theme-common">
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">IMG</div>
+      <div><strong>IronMark</strong>Gear</div>
+    </div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a class="active" href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Réalisations</h1>
+      <p>Découvrez les travaux et interventions réalisés par catégorie.</p>
+    </section>
+
+    
+
+    <section class="section" id="bâtiment">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;"><div style="width:8px;height:42px;background:linear-gradient(180deg,var(--bleu),var(--bleu-fonce));border-radius:999px;"></div><h2 style="margin:0;">Bâtiment & rénovation</h2></div>
+      
+      <div class="placeholder">
+        Les photos de réalisations bâtiment/rénovation seront ajoutées ici dès que nous aurons les visuels adaptés.
+      </div>
+    </section>
+
+    <section class="section" id="espaces">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;"><div style="width:8px;height:42px;background:linear-gradient(180deg,var(--vert),var(--vert-fonce));border-radius:999px;"></div><h2 style="margin:0;">Espaces verts</h2></div>
+      
+            <div class="carousel-shell">
+        <button class="carousel-arrow left hidden" id="realPrev" type="button" onclick="changeRealPage(-1)" aria-label="Voir les réalisations précédentes">‹</button>
+        <div class="gallery" id="realGallery"></div>
+        <button class="carousel-arrow right" id="realNext" type="button" onclick="changeRealPage(1)" aria-label="Voir les réalisations suivantes">›</button>
+      </div>
+      <div class="carousel-counter" id="realCounter"></div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button type="button" class="close-btn" aria-label="Fermer l’image" onclick="closeLightbox(event)">×</button>
+    <button type="button" class="lightbox-nav prev" aria-label="Image précédente" onclick="changeLightboxImage(-1, event)">‹</button>
+    <img id="lightboxImage" src="" alt="Image agrandie">
+    <button type="button" class="lightbox-nav next" aria-label="Image suivante" onclick="changeLightboxImage(1, event)">›</button>
+  </div>
+
+  <footer>
+    © 2026 IronMarkGear — Réalisations
+  </footer>
+
+  <script>
+    const photos = ["https://cidoum.s3.amazonaws.com/processed_images/78d0f7d0-deb8-4e86-ac19-c14d3037666c-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/388d8011-d1fc-4010-abca-62e5dd6b87de-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/974ea5c9-7e3b-4263-a7e3-fc4d72a16647-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/46ab4970-c169-4930-8b86-93fbd2e0146c-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/e8094608-1692-405b-a8e6-2c6cb6915c91-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/00e1fed1-89c5-4abc-a1cc-fd4cd2ca8460-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/b706494b-4013-49fe-b0dc-0d8e3978e8bb-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/af7274a7-4b54-4ffe-9df8-fa8c47754a2b-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/796083ff-2c73-4ee6-aeb2-3c408ac62c09-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/21698f4e-4ec5-4c18-93c5-9cf231e44f7a-medium.webp"];
+    const photosPerPage = 9;
+    let realPage = 0;
+    let lightboxIndex = 0;
+
+    function renderRealGallery() {
+      const grid = document.getElementById("realGallery");
+      const start = realPage * photosPerPage;
+      const currentPhotos = photos.slice(start, start + photosPerPage);
+
+      grid.innerHTML = currentPhotos.map((src, index) => `
+        <img onclick="openLightbox(${start + index})" src="${src}" alt="Réalisation espaces verts ${start + index + 1}" loading="lazy">
+      `).join("");
+
+      document.getElementById("realPrev").classList.toggle("hidden", realPage === 0);
+      document.getElementById("realNext").classList.toggle("hidden", start + photosPerPage >= photos.length);
+      document.getElementById("realCounter").textContent = `Photos ${start + 1} à ${Math.min(start + photosPerPage, photos.length)} sur ${photos.length}`;
+    }
+
+    function changeRealPage(direction) {
+      const maxPage = Math.ceil(photos.length / photosPerPage) - 1;
+      realPage = Math.max(0, Math.min(maxPage, realPage + direction));
+      renderRealGallery();
+    }
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      document.getElementById("lightboxImage").src = photos[lightboxIndex];
+      document.getElementById("lightbox").classList.add("active");
+    }
+
+    function changeLightboxImage(direction, event) {
+      event.stopPropagation();
+      lightboxIndex = (lightboxIndex + direction + photos.length) % photos.length;
+      document.getElementById("lightboxImage").src = photos[lightboxIndex];
+    }
+
+    function closeLightbox(event) {
+      if (!event || event.target.id === "lightbox" || event.target.classList.contains("close-btn")) {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+      if (document.getElementById("lightbox").classList.contains("active")) {
+        if (event.key === "ArrowLeft") changeLightboxImage(-1, event);
+        if (event.key === "ArrowRight") changeLightboxImage(1, event);
+      }
+    });
+
+    renderRealGallery();
+  </script>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

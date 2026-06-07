@@ -1,0 +1,151 @@
+{
+  "badge": {
+    "fr": "ENTRETIEN ESPACES VERTS",
+    "en": "GARDEN MAINTENANCE",
+    "nl": "TUINONDERHOUD"
+  },
+  "title": {
+    "fr": "Un jardin propre, sain et agréable toute l’année.",
+    "en": "A clean, healthy and pleasant garden all year round.",
+    "nl": "Een nette, gezonde en aangename tuin het hele jaar door."
+  },
+  "description": {
+    "fr": "IronMarkGear vous accompagne pour l’entretien de vos extérieurs avec un service soigné, fiable et professionnel.",
+    "en": "IronMarkGear supports your outdoor maintenance needs with a careful, reliable and professional service.",
+    "nl": "IronMarkGear helpt u bij het onderhoud van uw buitenruimtes met een zorgvuldige, betrouwbare en professionele service."
+  },
+  "reassurance": [
+    {
+      "title": {
+        "fr": "4,95/5 sur RingTwice",
+        "en": "4.95/5 on RingTwice",
+        "nl": "4,95/5 op RingTwice"
+      },
+      "text": {
+        "fr": "Évalué par plus de 150 clients, avec des avis solides et un profil reconnu.",
+        "en": "Rated by more than 150 clients, with strong reviews and a trusted profile.",
+        "nl": "Beoordeeld door meer dan 150 klanten, met sterke reviews en een betrouwbaar profiel."
+      }
+    },
+    {
+      "title": {
+        "fr": "Entretiens réguliers",
+        "en": "Regular maintenance",
+        "nl": "Regelmatig onderhoud"
+      },
+      "text": {
+        "fr": "Des passages planifiés pour garder votre jardin propre, net et agréable.",
+        "en": "Scheduled visits to keep your garden clean, neat and pleasant.",
+        "nl": "Geplande bezoeken om uw tuin proper, netjes en aangenaam te houden."
+      }
+    },
+    {
+      "title": {
+        "fr": "Contact direct possible",
+        "en": "Direct contact possible",
+        "nl": "Direct contact mogelijk"
+      },
+      "text": {
+        "fr": "Réservation RingTwice ou échange direct avant prestation.",
+        "en": "RingTwice booking or direct discussion before service.",
+        "nl": "Boeking via RingTwice of direct overleg voor de dienst."
+      }
+    }
+  ],
+  "servicesTitle": {
+    "fr": "Nos services",
+    "en": "Our services",
+    "nl": "Onze diensten"
+  },
+  "services": [
+    {
+      "title": {
+        "fr": "Tonte de pelouse",
+        "en": "Lawn mowing",
+        "nl": "Grasmaaien"
+      },
+      "text": {
+        "fr": "Une pelouse propre, régulière et bien entretenue.",
+        "en": "A clean, even and well-maintained lawn.",
+        "nl": "Een net, gelijkmatig en goed onderhouden gazon."
+      },
+      "icon": "Scissors"
+    },
+    {
+      "title": {
+        "fr": "Taille de haies",
+        "en": "Hedge trimming",
+        "nl": "Hagen snoeien"
+      },
+      "text": {
+        "fr": "Des haies nettes, propres et structurées.",
+        "en": "Neat, clean and structured hedges.",
+        "nl": "Nette, propere en gestructureerde hagen."
+      },
+      "icon": "Leaf"
+    },
+    {
+      "title": {
+        "fr": "Nettoyage extérieur",
+        "en": "Outdoor cleaning",
+        "nl": "Buitenreiniging"
+      },
+      "text": {
+        "fr": "Allées, terrasses et abords propres.",
+        "en": "Clean paths, terraces and outdoor areas.",
+        "nl": "Propere paden, terrassen en buitenruimtes."
+      },
+      "icon": "Sparkles"
+    },
+    {
+      "title": {
+        "fr": "Entretien complet",
+        "en": "Complete maintenance",
+        "nl": "Volledig onderhoud"
+      },
+      "text": {
+        "fr": "Un extérieur sain et agréable toute l’année.",
+        "en": "Healthy and pleasant outdoor spaces all year round.",
+        "nl": "Gezonde en aangename buitenruimtes het hele jaar door."
+      },
+      "icon": "TreePine"
+    },
+    {
+      "title": {
+        "fr": "Déchets verts",
+        "en": "Green waste",
+        "nl": "Groenafval"
+      },
+      "text": {
+        "fr": "Évacuation possible selon la prestation.",
+        "en": "Removal possible depending on the service.",
+        "nl": "Afvoer mogelijk afhankelijk van de dienst."
+      },
+      "icon": "Trash2"
+    },
+    {
+      "title": {
+        "fr": "Création d’aménagements",
+        "en": "Outdoor layout creation",
+        "nl": "Aanleg van buiteninrichting"
+      },
+      "text": {
+        "fr": "Plantations, arrosage et créations extérieures adaptées à votre espace.",
+        "en": "Planting, watering and outdoor layouts adapted to your space.",
+        "nl": "Aanplanting, bewatering en buitenaanleg op maat van uw ruimte."
+      },
+      "icon": "Sprout"
+    }
+  ],
+  "cta": {
+    "fr": "Prendre rendez-vous",
+    "en": "Book an appointment",
+    "nl": "Afspraak maken"
+  },
+  "secondaryCta": {
+    "fr": "Contact direct",
+    "en": "Direct contact",
+    "nl": "Direct contact"
+  },
+  "ringTwiceUrl": "https://ringtwice.be/fr/listworkers/154528-joakim-b"
+}

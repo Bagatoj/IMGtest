@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Panier | IronMarkGear</title><style>
+:root{--bleu:#0878c9;--bleu-fonce:#004783;--jaune:#ffc928;--jaune-fonce:#d99a00;--texte:#1f2d3d;--fond:#f4f6f8;--bleu-nuit:#243646;}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fond);color:var(--texte)}.top-bar{height:28px;background:var(--bleu-nuit)}header{background:white;min-height:86px;padding:0 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 3px 16px rgba(0,0,0,.12);position:sticky;top:0;z-index:10}.logo{display:flex;align-items:center;gap:12px;font-size:24px}.logo-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--jaune),var(--jaune-fonce));color:white;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900}nav{display:flex;align-items:center;gap:28px}nav a{text-decoration:none;color:var(--texte);font-size:16px;font-weight:600}nav a.active,nav a:hover{color:#b77d00}nav a.btn-devis,nav a.btn-devis:hover{color:white}.btn-devis{background:linear-gradient(180deg,var(--jaune),var(--jaune-fonce));color:white;padding:14px 22px;border-radius:7px;box-shadow:0 5px 10px rgba(0,0,0,.18)}main{padding:44px 7% 64px}.layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr .9fr;gap:24px}.card{background:white;border-radius:18px;padding:26px;box-shadow:0 14px 32px rgba(30,40,50,.12);border-top:8px solid var(--jaune)}h1{max-width:1180px;margin:0 auto 18px;font-size:clamp(38px,5vw,62px)}.cart-top-actions{max-width:1180px;margin:0 auto 22px;display:flex;gap:12px;align-items:center}.cart-top-actions a,.cart-top-actions button{border:0;border-radius:10px;padding:13px 16px;font-weight:900;text-decoration:none;cursor:pointer}.cart-top-actions a{background:#eef5fb;color:var(--texte)}.cart-top-actions button{background:#ffe9e9;color:#b42323}.cart-item{display:grid;grid-template-columns:90px 1fr auto;gap:14px;align-items:center;border-bottom:1px solid #e5eaf0;padding:14px 0}.cart-item img{width:90px;height:70px;object-fit:cover;border-radius:10px;background:#fff8dc}.cart-item strong{display:block;margin-bottom:5px}.cart-product-link{color:var(--texte);text-decoration:none}.cart-product-link:hover{text-decoration:underline}.cart-item small{display:block;color:#526171;line-height:1.45}.cart-item button{border:0;background:#ffe9e9;color:#b42323;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:900}label{font-weight:800}input,select,textarea{width:100%;margin-top:7px;margin-bottom:14px;padding:14px 15px;border:1px solid #d4dce4;border-radius:9px;font:inherit;background:#fbfcfd}textarea{min-height:120px}.delivery,.total{background:#eef5fb;border-left:6px solid var(--bleu);border-radius:12px;padding:14px;margin:10px 0 16px;color:#425363;line-height:1.45}.total{background:#fff8dc;border-left-color:var(--jaune);font-size:20px;font-weight:900;color:#856100}.submit{border:0;background:linear-gradient(180deg,var(--jaune),var(--jaune-fonce));color:white;padding:16px 20px;border-radius:10px;font-weight:900;font-size:18px;cursor:pointer;width:100%}footer{margin-top:60px;background:var(--bleu-nuit);color:white;text-align:center;padding:24px 7%;font-size:14px}@media(max-width:950px){header{padding:22px 6%;flex-direction:column;gap:20px}nav{flex-wrap:wrap;justify-content:center}.layout{grid-template-columns:1fr}.cart-item{grid-template-columns:70px 1fr}}
+
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 900;
+  box-shadow: 0 14px 32px rgba(0,0,0,.22);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+  z-index: 9999;
+  background: #0f8a3b;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { background: #0f8a3b; }
+.toast.error { background: #c62828; }
+.toast.warning { background: #d98a00; }
+
+
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#fff06a 0%,#ffc107 42%,#c87800 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.48), inset 0 -10px 18px rgba(110,70,0,.25), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style><style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head><body class="theme-rental"><div class="top-bar"></div><header><div class="logo"><div class="logo-icon">IMG</div><div><strong>IronMark</strong>Gear</div></div><nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a class="active" href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav></header><main><h1>Panier</h1>
+<div class="cart-top-actions">
+  <a href="location-materiel.html">← Retour aux locations</a>
+  <button type="button" onclick="clearCart()">Vider tout le panier</button>
+</div><section class="layout"><div class="card"><h2>Machines sélectionnées</h2><div id="cartItems"></div><div class="total" id="cartTotal">Total estimé : 0 € HTVA</div></div><div class="card"><h2>Coordonnées et livraison</h2><label>Vous êtes<select id="clientType" onchange="toggleVat()"><option value="particulier">Particulier</option><option value="societe">Société</option></select></label><div id="vatBlock" style="display:none;"><label>Numéro de TVA<input id="vat" type="text" placeholder="BE ..."></label></div><label><span id="nameLabel">Nom complet</span><input id="name" type="text" placeholder="Votre nom ou personne de référence"></label><label>Téléphone<input id="phone" type="tel" placeholder="+32 ..."></label><label>E-mail<input id="email" type="email" placeholder="votre@email.com"></label><label>Adresse de livraison<input id="address" type="text" placeholder="Adresse complète"></label><label>Ville<select id="city" onchange="updateDelivery()"><option value="">Choisir une ville</option><option value="bruxelles">Bruxelles</option><option value="liege">Liège</option><option value="autre">Autre ville</option></select></label><div id="durationBlock"><label>Durée souhaitée<select id="duration" onchange="updateDelivery()"><option value="">Choisir une durée</option><option value="1j">1 jour</option><option value="weekend">Week-end</option><option value="1s">1 semaine</option><option value="2s">2 semaines</option><option value="3s">3 semaines</option><option value="4s">4 semaines</option></select></label></div><label>Distance aller simple depuis Bruxelles, en km
+  <input id="distanceKm" type="number" min="0" step="1" placeholder="Exemple : 95" oninput="updateDelivery()">
+</label>
+<input id="machineCategory" type="hidden" value="petit">
+<div class="delivery" id="deliveryInfo">Indiquez une ville ou une distance pour estimer la livraison. Calcul en aller-retour.</div><label>Message<textarea id="message" placeholder="Informations utiles, dates souhaitées, accès, contraintes..."></textarea></label><button class="submit" onclick="sendCart()">Envoyer la demande</button></div></section></main><footer>© 2026 IronMarkGear — Panier</footer><script>
+
+function showToast(message, type="success") {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.className = "toast show " + type;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.className = "toast " + type;
+  }, 2400);
+}
+
+function getCart(){return JSON.parse(localStorage.getItem("img_cart")||"[]");}
+function setCart(c){localStorage.setItem("img_cart",JSON.stringify(c));}
+function renderCart(){const cart=getCart();const root=document.getElementById("cartItems");const total=cart.reduce((s,i)=>s+(Number(i.price)||0)* (Number(i.quantity)||1),0);const needsDuration=cart.some(i=>i.needsDuration||!i.startDate||!i.endDate);document.getElementById("durationBlock").style.display=needsDuration?"block":"none";document.getElementById("cartTotal").textContent=`Total estimé : ${total} € HTVA`;if(!cart.length){root.innerHTML="<p>Votre panier est vide.</p>";return;}root.innerHTML=cart.map((i,idx)=>{
+  const productUrl = i.id ? `${i.id}.html` : "location-materiel.html";
+  const dateText = i.startDate && i.endDate ? `Dates : ${i.startDate} → ${i.endDate} (${i.days} jour(s))` : "Date à définir";
+  const priceText = i.quoteOnly ? "Prix à définir" : (i.price ? `Prix estimé : ${i.price} € HTVA` : "Prix à confirmer");
+  const quoteText = i.quoteOnly ? "<small>Machine à soumettre en devis</small>" : "";
+  return `<div class="cart-item">
+    <a href="${productUrl}"><img src="${i.image}" alt="${i.title}"></a>
+    <div>
+      <a class="cart-product-link" href="${productUrl}"><strong>${i.title}</strong></a>
+      ${quoteText}
+      <small>${dateText}</small>
+      <small>${priceText}</small>
+    </div>
+    <button onclick="removeItem(${idx})">Retirer</button>
+  </div>`;
+}).join("");}
+function clearCart(){localStorage.removeItem("img_cart");renderCart();updateDelivery();showToast("Panier vidé", "warning");}
+function removeItem(idx){const cart=getCart();cart.splice(idx,1);setCart(cart);renderCart();updateDelivery();showToast("Article supprimé", "warning");}
+function toggleVat(){const isSociete=document.getElementById("clientType").value==="societe";document.getElementById("vatBlock").style.display=isSociete?"block":"none";document.getElementById("nameLabel").textContent=isSociete?"Personne de référence":"Nom complet";}
+function updateDelivery(){
+  const city=document.getElementById("city").value;
+  const distanceInput=Number(document.getElementById("distanceKm")?.value || 0);
+  const category=document.getElementById("machineCategory")?.value || "petit";
+  const cart=getCart();
+  const hasWeek=cart.some(i=>Number(i.days)>=7)||["1s","2s","3s","4s"].includes(document.getElementById("duration").value);
+
+  let oneWayKm=distanceInput;
+  if(!oneWayKm && city==="bruxelles") oneWayKm=8;
+  if(!oneWayKm && city==="liege") oneWayKm=95;
+
+  const roundTripKm=oneWayKm*2;
+  let price=0;
+  let detail="";
+
+  if(category==="lourd"){
+    price=Math.max(60, roundTripKm*2);
+    detail=`Machine lourde : ${roundTripKm} km aller-retour × 2 €/km, minimum 60 € HTVA.`;
+  } else {
+    price=Math.max(25, roundTripKm*0.90);
+    detail=`Petit matériel : ${roundTripKm} km aller-retour × 0,90 €/km, minimum 25 € HTVA.`;
+  }
+
+  if(city==="bruxelles" && hasWeek){
+    document.getElementById("deliveryInfo").textContent="Livraison estimée : gratuite sur Bruxelles à partir d’une semaine de location.";
+    return;
+  }
+
+  if(oneWayKm){
+    document.getElementById("deliveryInfo").textContent=`Livraison estimée : ${price.toFixed(2).replace(".", ",")} € HTVA. ${detail} Le prix inclut carburant, temps de déplacement, chargement et assurance transport.`;
+  } else if(city==="autre") {
+    document.getElementById("deliveryInfo").textContent="Livraison hors Bruxelles : indiquez la distance aller simple ou demandez une estimation.";
+  } else {
+    document.getElementById("deliveryInfo").textContent="Sélectionnez une ville ou indiquez la distance aller simple depuis Bruxelles. Le calcul est toujours fait en aller-retour.";
+  }
+}
+function sendCart(){const cart=getCart();const summary=cart.map(i=>`- ${i.title} x${i.quantity||1} ${i.startDate?`(${i.startDate} → ${i.endDate}, ${i.price} € HTVA)`:"(dates à définir)"}`).join("%0A");const total=cart.reduce((s,i)=>s+(Number(i.price)||0),0);const body=`Demande de location:%0A${summary}%0A%0ATotal estimé: ${total} € HTVA%0AType client: ${document.getElementById("clientType").value}%0ATVA: ${document.getElementById("vat").value}%0ANom: ${document.getElementById("name").value}%0ATéléphone: ${document.getElementById("phone").value}%0AE-mail: ${document.getElementById("email").value}%0AAdresse: ${document.getElementById("address").value}%0AVille: ${document.getElementById("city").value}%0ADistance aller simple: ${document.getElementById("distanceKm")?.value || ""} km%0ACatégorie livraison: ${document.getElementById("machineCategory")?.value || "petit matériel"}%0ADurée souhaitée: ${document.getElementById("duration").value}%0AMessage: ${document.getElementById("message").value}`;window.location.href=`mailto:ironmarkgear@gmail.com?subject=Demande de location matériel&body=${body}`;}
+renderCart();toggleVat();updateDelivery();
+</script>
+<script src="assets/js/app.js"></script>
+</body></html>

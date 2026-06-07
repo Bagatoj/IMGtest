@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entretien des espaces verts | IronMarkGear</title>
+
+  <style>
+    :root {
+      --vert: #39a935;
+      --vert-fonce: #006b38;
+      --bleu-nuit: #243646;
+      --texte: #1f2d3d;
+      --fond: #f4f6f8;
+      --blanc: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+    }
+
+    .top-bar {
+      height: 28px;
+      background: var(--bleu-nuit);
+    }
+
+    header {
+      background: var(--blanc);
+      min-height: 86px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--vert), var(--vert-fonce));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texte);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    nav a.btn-devis,
+    nav a.btn-devis:hover,
+    nav a.btn-devis.active {
+      color: white;
+    }
+
+    nav a:hover { color: var(--vert); }
+
+    .btn-devis {
+      background: var(--vert);
+      color: white;
+      padding: 14px 22px;
+      border-radius: 7px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    main {
+      padding: 42px 7% 64px;
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto 30px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.05;
+    }
+
+    .hero h1 span { color: var(--vert-fonce); }
+
+    .hero p {
+      font-size: 20px;
+      color: #526171;
+      line-height: 1.55;
+      margin: 0 0 24px;
+    }
+
+    .rating-card {
+      background: white;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 14px 32px rgba(30, 40, 50, 0.14);
+      border-top: 8px solid var(--vert);
+    }
+
+    .rating {
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--vert-fonce);
+      margin-bottom: 6px;
+    }
+
+    .rating small {
+      font-size: 18px;
+      color: #526171;
+      font-weight: 700;
+    }
+
+    .badges {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .badge {
+      background: #eef8ef;
+      color: var(--vert-fonce);
+      border-radius: 12px;
+      padding: 14px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: 0 auto 42px;
+    }
+
+    .section-title {
+      font-size: 34px;
+      margin: 0 0 18px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-box {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.10);
+      border-left: 6px solid var(--vert);
+    }
+
+    .service-box h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .service-box p {
+      margin: 0;
+      line-height: 1.5;
+      color: #526171;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.12);
+      background: #dfe7df;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+
+    .more-review-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+      border-left: 6px solid var(--vert);
+    }
+
+    .review-link {
+      display: inline-block;
+      margin-top: 4px;
+      background: var(--vert);
+      color: white;
+      text-decoration: none;
+      font-weight: 900;
+      padding: 11px 14px;
+      border-radius: 9px;
+      text-align: center;
+    }
+
+    .review {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.10);
+    }
+
+    .review strong {
+      display: block;
+      margin-top: 12px;
+      color: var(--vert-fonce);
+    }
+
+    .cta {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--vert), var(--vert-fonce));
+      color: white;
+      border-radius: 22px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: center;
+      box-shadow: 0 16px 36px rgba(0, 90, 40, 0.22);
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: 34px;
+    }
+
+    .cta p {
+      margin: 0 0 12px;
+      font-size: 18px;
+      line-height: 1.5;
+      opacity: .96;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .primary-btn,
+    .secondary-btn {
+      text-align: center;
+      border-radius: 10px;
+      padding: 17px 22px;
+      font-size: 18px;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .primary-btn {
+      background: white;
+      color: var(--vert-fonce);
+    }
+
+    .secondary-btn {
+      border: 2px solid rgba(255,255,255,.8);
+      color: white;
+    }
+
+    .notice {
+      margin-top: 16px;
+      font-size: 14px;
+      opacity: .9;
+    }
+
+
+    .gallery img {
+      cursor: zoom-in;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .gallery img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 30px rgba(30, 40, 50, 0.20);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 20, 30, 0.86);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      z-index: 999;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: min(1100px, 94vw);
+      max-height: 88vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      background: white;
+    }
+
+    .lightbox button {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      border: 0;
+      background: white;
+      color: #1f2d3d;
+      font-size: 30px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+
+    .carousel-shell {
+      position: relative;
+    }
+
+    .gallery,
+    .reviews {
+      transition: opacity 180ms ease;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: none;
+      background: white;
+      color: var(--vert-fonce);
+      font-size: 30px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.20);
+      z-index: 2;
+    }
+
+    .carousel-arrow:hover {
+      background: #eef8ef;
+    }
+
+    .carousel-arrow.left {
+      left: -22px;
+    }
+
+    .carousel-arrow.right {
+      right: -22px;
+    }
+
+    .carousel-arrow.hidden {
+      display: none;
+    }
+
+    .carousel-counter {
+      margin-top: 14px;
+      text-align: center;
+      color: #526171;
+      font-weight: 700;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border: 0;
+      border-radius: 50%;
+      background: white;
+      color: #1f2d3d;
+      font-size: 38px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    }
+
+    .lightbox-nav.prev {
+      left: 28px;
+    }
+
+    .lightbox-nav.next {
+      right: 28px;
+    }
+
+    .lightbox .close-btn {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      border: 0;
+      background: white;
+      color: #1f2d3d;
+      font-size: 30px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    @media (max-width: 950px) {
+      .carousel-arrow.left {
+        left: 8px;
+      }
+
+      .carousel-arrow.right {
+        right: 8px;
+      }
+
+      .lightbox-nav.prev {
+        left: 12px;
+      }
+
+      .lightbox-nav.next {
+        right: 12px;
+      }
+    }
+
+
+    .more-card {
+      min-height: 260px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #39a935, #006b38);
+      color: white;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.12);
+    }
+
+    .more-card h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .more-card p {
+      margin: 0 0 18px;
+      line-height: 1.5;
+      opacity: .95;
+    }
+
+    .more-card a {
+      background: white;
+      color: var(--vert-fonce);
+      text-decoration: none;
+      font-weight: 900;
+      padding: 13px 18px;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+    }
+
+
+
+    .reviews-carousel-shell {
+      min-height: 270px;
+      display: flex;
+      align-items: center;
+    }
+
+    .reviews-carousel-shell .reviews {
+      width: 100%;
+    }
+
+    .reviews .review {
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .reviews .review strong {
+      margin-top: auto;
+      padding-top: 14px;
+    }
+
+    .reviews-carousel-shell .carousel-arrow {
+      top: 135px;
+      transform: none;
+    }
+
+    @media (max-width: 950px) {
+      .reviews-carousel-shell {
+        min-height: auto;
+      }
+
+      .reviews .review {
+        min-height: auto;
+      }
+
+      .reviews-carousel-shell .carousel-arrow {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    footer {
+      margin-top: 60px;
+      background: var(--bleu-nuit);
+      color: white;
+      text-align: center;
+      padding: 24px 7%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      header {
+        padding: 22px 6%;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid,
+      .gallery,
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery img {
+        height: 300px;
+      }
+    }
+  
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#69e58a 0%,#28a745 42%,#0b6f2d 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -10px 18px rgba(0,70,20,.25), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style>
+<style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="theme-green">
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">IMG</div>
+      <div><strong>IronMark</strong>Gear</div>
+    </div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Entretien des <span>espaces verts</span></h1>
+        <p>
+          Tonte, taille de haies, débroussaillage, ramassage de feuilles, nettoyage de gouttières et remise en état d’extérieurs.
+          Les demandes passent par mon profil Ring Twice afin de centraliser les rendez-vous, les échanges et le règlement.
+        </p>
+      </div>
+
+      <aside class="rating-card">
+        <div class="rating">4.95/5</div>
+        <small>Moyenne pour 154 évaluations sur Ring Twice</small>
+        <div class="badges">
+          <div class="badge">SuperTalent</div>
+          <div class="badge">Ambassadeur Ring Twice</div>
+          <div class="badge">34 clients réguliers</div>
+          <div class="badge">154 évaluations clients</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Services proposés</h2>
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>Tonte & entretien</h3>
+          <p>Entretien régulier ou ponctuel, remise en état et nettoyage général de vos extérieurs.</p>
+        </div>
+        <div class="service-box">
+          <h3>Taille & haies</h3>
+          <p>Taille de haies, végétation mitoyenne, bambous, lierre et débroussaillage selon le besoin.</p>
+        </div>
+        <div class="service-box">
+          <h3>Gros travaux de jardinage</h3>
+          <p>Travaux plus conséquents : utilisation de mini-pelle, préparation de terrain, pose de gazon en rouleau et aménagement extérieur.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="realisations">
+      <h2 class="section-title">Quelques réalisations</h2>
+      <div class="carousel-shell">
+        <button class="carousel-arrow left hidden" id="galleryPrev" type="button" onclick="changeGalleryPage(-1)" aria-label="Voir les photos précédentes">‹</button>
+        <div class="gallery" id="galleryGrid"></div>
+        <button class="carousel-arrow right" id="galleryNext" type="button" onclick="changeGalleryPage(1)" aria-label="Voir les photos suivantes">›</button>
+      </div>
+      <div class="carousel-counter" id="galleryCounter"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Avis clients</h2>
+      <div class="carousel-shell reviews-carousel-shell">
+        <button class="carousel-arrow left hidden" id="reviewsPrev" type="button" onclick="changeReviewsPage(-1)" aria-label="Voir les avis précédents">‹</button>
+        <div class="reviews" id="reviewsGrid"></div>
+        <button class="carousel-arrow right" id="reviewsNext" type="button" onclick="changeReviewsPage(1)" aria-label="Voir les avis suivants">›</button>
+      </div>
+      <div class="carousel-counter" id="reviewsCounter"></div>
+    </section>
+
+    <section class="section" id="zone-intervention">
+      <h2 class="section-title">Zone d’intervention</h2>
+      <div class="service-box">
+        <h3>Principalement Bruxelles et alentours</h3>
+        <p>
+          J’interviens principalement sur Bruxelles et ses environs pour l’entretien des espaces verts.
+          Selon la nature de la demande, le volume du chantier et l’organisation nécessaire, une intervention peut également être étudiée ailleurs en Belgique.
+        </p>
+      </div>
+    </section>
+
+
+    <section class="section" id="faq">
+      <h2 class="section-title">FAQ</h2>
+      <div class="services-grid">
+        <div class="service-box">
+          <h3>Comment prendre rendez-vous ?</h3>
+          <p>La prise de rendez-vous se fait via mon profil Ring Twice afin de centraliser les demandes, les échanges et le règlement.</p>
+        </div>
+        <div class="service-box">
+          <h3>Un devis est-il possible avant intervention ?</h3>
+          <p>Oui, si nécessaire je peux venir évaluer le travail à réaliser avant la prestation.</p>
+        </div>
+        <div class="service-box">
+          <h3>Comment se passe le paiement ?</h3>
+          <p>La prestation devra être réglée via Ring Twice, qui sert de plateforme externe sécurisée.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div>
+        <h2>Comment prendre rendez-vous ?</h2>
+        <p>
+          Pour réserver une prestation, cliquez sur le bouton et faites votre demande via mon profil Ring Twice.
+          Vous serez redirigé vers une plateforme externe sécurisée.
+        </p>
+        <p>
+          Un compte Ring Twice sera nécessaire pour accéder au service et finaliser la demande.
+          Je peux bien sûr venir faire un devis en amont si nécessaire, mais la prestation devra être réglée via Ring Twice.
+        </p>
+        <p class="notice">
+          Besoin d’aide ou d’une information avant de passer par Ring Twice ? Vous pouvez me contacter directement.
+        </p>
+      </div>
+
+      <div class="cta-actions">
+        <a class="primary-btn" href="https://ringtwice.be/fr/listworkers/154528-joakim-b" target="_blank" rel="noopener noreferrer">Prendre rendez-vous sur Ring Twice</a>
+        <a class="secondary-btn" href="contact.html">Me contacter pour plus d’informations</a>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button type="button" class="close-btn" aria-label="Fermer l’image" onclick="closeLightbox(event)">×</button>
+    <button type="button" class="lightbox-nav prev" aria-label="Image précédente" onclick="changeLightboxImage(-1, event)">‹</button>
+    <img id="lightboxImage" src="" alt="Image agrandie">
+    <button type="button" class="lightbox-nav next" aria-label="Image suivante" onclick="changeLightboxImage(1, event)">›</button>
+  </div>
+
+  <footer>
+    © 2026 IronMarkGear — Entretien des espaces verts
+  </footer>
+
+  <script>
+    const photos = ["https://cidoum.s3.amazonaws.com/processed_images/78d0f7d0-deb8-4e86-ac19-c14d3037666c-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/388d8011-d1fc-4010-abca-62e5dd6b87de-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/974ea5c9-7e3b-4263-a7e3-fc4d72a16647-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/46ab4970-c169-4930-8b86-93fbd2e0146c-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/e8094608-1692-405b-a8e6-2c6cb6915c91-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/00e1fed1-89c5-4abc-a1cc-fd4cd2ca8460-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/b706494b-4013-49fe-b0dc-0d8e3978e8bb-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/af7274a7-4b54-4ffe-9df8-fa8c47754a2b-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/796083ff-2c73-4ee6-aeb2-3c408ac62c09-medium.webp", "https://cidoum.s3.amazonaws.com/processed_images/21698f4e-4ec5-4c18-93c5-9cf231e44f7a-medium.webp"];
+    const reviews = [{"title": "entretien jardin Pastur", "text": "Travail lourd et délicat, fait avec grande efficacité. Merci.", "name": "Frédérique d.", "date": "29/04/2026"}, {"title": "Taillage bambou et lierre / nettoyage mini jardin", "text": "Travail rapide et soigné ! C’est la deuxième fois que nous faisons appel à Joakim pour l’entretien du jardin et nous le recommandons :-)", "name": "Ludivine A.", "date": "13/04/2026"}, {"title": "Débroussaillage + enlèvement déchets verts", "text": "Efficace et sympa.", "name": "Atli S.", "date": "29/03/2026"}, {"title": "Jardinage Février 2026", "text": "Excellente présentation de jardinage.", "name": "Aleksandras Č.", "date": "19/02/2026"}, {"title": "Entretien des abords d’une copropriété", "text": "Très professionnel.", "name": "Katia L.", "date": "11/11/2025"}, {"title": "Tailler / nettoyer", "text": "Le jardin a meilleure mine ; merci Joakim !!", "name": "Mary-Rose V.", "date": "Avis Ring Twice"}, {"title": "Raccourcir haie", "text": "Très bon service. Compétent, aimable et courageux : il n’a pas voulu arrêter malgré la pluie.", "name": "Françoise C.", "date": "Avis Ring Twice"}, {"title": "Entretien jardin Pastur", "text": "Joakim est très autonome ! Et répond aux attentes.", "name": "Frédérique d.", "date": "Avis Ring Twice"}, {"title": "Entretien haies et végétation mitoyenne", "text": "Encore un service impeccable. Merci Joakim.", "name": "Luis R.", "date": "Avis Ring Twice"}, {"title": "Entretien jardin", "text": "Bonjour, merci pour votre patience.", "name": "Bart G.", "date": "Avis Ring Twice"}, {"title": "IXELLES : tonte pelouse et entretien", "text": "Très professionnel, soucieux de bien faire. À recommander !", "name": "Bdw I.", "date": "Avis Ring Twice"}, {"title": "Débroussaillage + enlèvement déchets verts", "text": "Joakim a été très réactif et efficace.", "name": "Atli S.", "date": "Avis Ring Twice"}, {"title": "Tronçonner 2 arbustes", "text": "Ponctuel et a répondu à mes demandes malgré mon petit chantier. Très contente.", "name": "Valérie L.", "date": "Avis Ring Twice"}, {"title": "Entretien haies et végétation mitoyenne", "text": "Rien à dire, service impeccable !", "name": "Luis R.", "date": "Avis Ring Twice"}, {"title": "Débroussailler terrain", "text": "Très bon travail. Ponctuel, très poli et agréable. Très bonne communication, je recommande !", "name": "Nathalie F.", "date": "Avis Ring Twice"}, {"title": "Jardin crèche", "text": "Très beau travail, jardinières bien montées et réparation pavement parfaite.", "name": "Karine F.", "date": "Avis Ring Twice"}, {"title": "Nettoyage terrasse", "text": "Super service ! Merci !", "name": "Sandra K.", "date": "Avis Ring Twice"}, {"title": "Tailler / nettoyer", "text": "Excellent travail.", "name": "Mary-Rose V.", "date": "Avis Ring Twice"}, {"title": "Tonte, ramassage", "text": "Je recommande Joakim pour vos travaux de jardinage.", "name": "Eric K.", "date": "Avis Ring Twice"}, {"title": "Tonte entretien régulier", "text": "Super service merci.", "name": "Kinan S.", "date": "Avis Ring Twice"}, {"title": "Tonte de jardin", "text": "Travail excellent !", "name": "Benjamin W.", "date": "Avis Ring Twice"}, {"title": "Taille / élagage haie de sapin", "text": "Travail impeccable : élagage, taille de haie de sapin et abattage. Super volontaire, travail très propre et rapide.", "name": "Cédric V.", "date": "Avis Ring Twice"}, {"title": "Tailles, débroussaillage et plantation de gazon", "text": "Très efficace, de bon conseil, et sympathique.", "name": "Youenn B.", "date": "Avis Ring Twice"}, {"title": "Entretien jardin Pastur", "text": "Joakim travaille vite et bien et répond très bien aux demandes spécifiques.", "name": "Frédérique d.", "date": "Avis Ring Twice"}, {"title": "Tonte de gazon jardin", "text": "Travail efficace, super rapide et très sympa ! Merci.", "name": "Nunu T.", "date": "Avis Ring Twice"}, {"title": "Entretien jardin", "text": "Joakim est un très bon ouvrier, très gentil. Je recommande vraiment.", "name": "Bart G.", "date": "Avis Ring Twice"}, {"title": "Divers", "text": "Très consciencieux. Ne traîne pas.", "name": "Julien k.", "date": "Avis Ring Twice"}, {"title": "Entretien jardin Pastur", "text": "Tonte rapide et efficace.", "name": "Frédérique d.", "date": "Avis Ring Twice"}, {"title": "Haag snoeien", "text": "Smooth service and very friendly! Would recommend.", "name": "Lise C.", "date": "Avis Ring Twice"}];
+
+    const photosPerPage = 6;
+    const reviewsPerPage = 4;
+    let galleryPage = 0;
+    let reviewsPage = 0;
+    let lightboxIndex = 0;
+
+    function renderGallery() {
+      const grid = document.getElementById("galleryGrid");
+      const start = galleryPage * photosPerPage;
+      const currentPhotos = photos.slice(start, start + photosPerPage);
+
+      let galleryContent = currentPhotos.map((src, index) => `
+        <img onclick="openLightbox(${start + index})" src="${src}" alt="Réalisation espaces verts ${start + index + 1}" loading="lazy">
+      `).join("");
+
+      if (start + photosPerPage >= photos.length) {
+        galleryContent += `
+          <div class="more-card">
+            <h3>Envie de voir plus de photos ?</h3>
+            <p>Rendez-vous sur mon profil Ring Twice pour découvrir davantage de réalisations.</p>
+            <a href="https://ringtwice.be/fr/listworkers/154528-joakim-b" target="_blank" rel="noopener noreferrer">Voir mon profil</a>
+          </div>
+        `;
+      }
+
+      grid.innerHTML = galleryContent;
+
+      document.getElementById("galleryPrev").classList.toggle("hidden", galleryPage === 0);
+      document.getElementById("galleryNext").classList.toggle("hidden", start + photosPerPage >= photos.length);
+      document.getElementById("galleryCounter").textContent = `Photos ${start + 1} à ${Math.min(start + photosPerPage, photos.length)} sur ${photos.length}`;
+    }
+
+    function changeGalleryPage(direction) {
+      const maxPage = Math.ceil(photos.length / photosPerPage) - 1;
+      galleryPage = Math.max(0, Math.min(maxPage, galleryPage + direction));
+      renderGallery();
+    }
+
+    function renderReviews() {
+      const grid = document.getElementById("reviewsGrid");
+      const start = reviewsPage * reviewsPerPage;
+      const currentReviews = reviews.slice(start, start + reviewsPerPage);
+
+      let reviewsContent = currentReviews.map(review => `
+        <div class="review">
+          “${review.text}”
+          <strong>${review.name}</strong>
+        </div>
+      `).join("");
+
+      if (start + reviewsPerPage >= reviews.length) {
+        reviewsContent += `
+          <div class="review more-review-card">
+            <strong>Voir toutes mes évaluations clients</strong>
+            Retrouvez l’ensemble de mes avis directement sur mon profil Ring Twice.
+            <a class="review-link" href="https://ringtwice.be/fr/listworkers/154528-joakim-b" target="_blank" rel="noopener noreferrer">Voir mes évaluations</a>
+          </div>
+        `;
+      }
+
+      grid.innerHTML = reviewsContent;
+
+      document.getElementById("reviewsPrev").classList.toggle("hidden", reviewsPage === 0);
+      document.getElementById("reviewsNext").classList.toggle("hidden", start + reviewsPerPage >= reviews.length);
+      document.getElementById("reviewsCounter").textContent = `Avis ${start + 1} à ${Math.min(start + reviewsPerPage, reviews.length)} sur ${reviews.length}`;
+    }
+
+    function changeReviewsPage(direction) {
+      const maxPage = Math.ceil(reviews.length / reviewsPerPage) - 1;
+      reviewsPage = Math.max(0, Math.min(maxPage, reviewsPage + direction));
+      renderReviews();
+    }
+
+    function openLightbox(index) {
+      lightboxIndex = index;
+      document.getElementById("lightboxImage").src = photos[lightboxIndex];
+      document.getElementById("lightbox").classList.add("active");
+    }
+
+    function changeLightboxImage(direction, event) {
+      event.stopPropagation();
+      lightboxIndex = (lightboxIndex + direction + photos.length) % photos.length;
+      document.getElementById("lightboxImage").src = photos[lightboxIndex];
+    }
+
+    function closeLightbox(event) {
+      if (!event || event.target.id === "lightbox" || event.target.classList.contains("close-btn")) {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+
+      if (document.getElementById("lightbox").classList.contains("active")) {
+        if (event.key === "ArrowLeft") {
+          lightboxIndex = (lightboxIndex - 1 + photos.length) % photos.length;
+          document.getElementById("lightboxImage").src = photos[lightboxIndex];
+        }
+        if (event.key === "ArrowRight") {
+          lightboxIndex = (lightboxIndex + 1) % photos.length;
+          document.getElementById("lightboxImage").src = photos[lightboxIndex];
+        }
+      }
+    });
+
+    renderGallery();
+    renderReviews();
+  </script>
+
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

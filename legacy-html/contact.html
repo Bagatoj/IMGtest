@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | IronMarkGear</title>
+
+  <style>
+    :root {
+      --bleu: #0878c9;
+      --accent: #0878c9;
+      --accent-fonce: #004783;
+      --bleu-fonce: #004783;
+      --jaune: #ffc928;
+      --vert: #39a935;
+      --vert-fonce: #006b38;
+      --texte: #1f2d3d;
+      --fond: #f4f6f8;
+      --blanc: #ffffff;
+      --bleu-nuit: #243646;
+    }
+
+    * { box-sizing: border-box; }
+body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+    }
+
+    .top-bar {
+      height: 28px;
+      background: var(--bleu-nuit);
+    }
+
+    header {
+      background: var(--blanc);
+      min-height: 86px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 16px rgba(0, 0, 0, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--bleu-nuit));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texte);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.btn-devis,
+    nav a.btn-devis.active,
+    nav a.btn-devis:hover {
+      color: white;
+    }
+
+    .btn-devis,
+    .btn-devis.active {
+      background: var(--accent);
+      color: white;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 7px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    main {
+      padding: 44px 7% 64px;
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 20px;
+      color: #526171;
+      line-height: 1.5;
+    }
+
+    .contact-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 14px 32px rgba(30, 40, 50, 0.12);
+    }
+
+    .info-card {
+      border-top: 8px solid var(--accent);
+    }
+
+    .message-card {
+      border-top: 8px solid var(--accent);
+    }
+
+    .card h2 {
+      margin: 0 0 22px;
+      font-size: 30px;
+    }
+
+    .info-item {
+      margin-bottom: 22px;
+    }
+
+    .info-label {
+      display: block;
+      color: #6d7a86;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+
+    .info-value,
+    .info-value a {
+      color: var(--texte);
+      font-size: 22px;
+      font-weight: 900;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .info-value a:hover {
+      color: var(--bleu);
+    }
+
+    .notice {
+      margin-top: 24px;
+      background: #eef5fb;
+      border-left: 5px solid var(--bleu);
+      padding: 18px;
+      border-radius: 10px;
+      color: #425363;
+      line-height: 1.55;
+    }
+
+    .notice strong {
+      color: var(--accent-fonce);
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      padding: 16px 20px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0,0,0,.16);
+    }
+
+    .btn-icon {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .whatsapp,
+    .email,
+    .phone {
+      background: linear-gradient(180deg, var(--accent), var(--accent-fonce));
+    }
+
+    .form-placeholder {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field {
+      background: #fbfcfd;
+      border: 1px solid #d4dce4;
+      border-radius: 10px;
+      padding: 16px;
+      color: #6d7a86;
+    }
+
+    .placeholder-note {
+      background: #eef5fb;
+      border-left: 5px solid var(--bleu);
+      padding: 18px;
+      border-radius: 10px;
+      line-height: 1.55;
+      color: #425363;
+    }
+
+    .devis-inline-btn {
+      display: inline-block;
+      margin-top: 14px;
+      background: linear-gradient(180deg, var(--bleu), var(--bleu-fonce));
+      color: white;
+      padding: 14px 18px;
+      border-radius: 9px;
+      text-decoration: none;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(0,0,0,.14);
+    }
+
+    .legal-note {
+      max-width: 1120px;
+      margin: 28px auto 0;
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      color: #526171;
+      box-shadow: 0 10px 24px rgba(30, 40, 50, 0.08);
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: var(--bleu-nuit);
+      color: white;
+      text-align: center;
+      padding: 24px 7%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      header {
+        padding: 22px 6%;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#5fc5ff 0%,#1e73be 42%,#003b73 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -10px 18px rgba(0,0,0,.22), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style>
+<style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="theme-common">
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">IMG</div>
+      <div><strong>IronMark</strong>Gear</div>
+    </div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a class="active" href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Contact</h1>
+      <p>Pour une demande claire et rapide, privilégiez un message écrit avec toutes les informations essentielles.</p>
+    </section>
+
+    <section class="contact-layout">
+      <div class="card info-card">
+        <h2>Coordonnées</h2>
+
+        <div class="info-item">
+          <span class="info-label">Société</span>
+          <div class="info-value">IronMarkGear</div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Téléphone</span>
+          <div class="info-value"><a href="tel:+32492867023">+32 492 86 70 23</a></div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">E-mail</span>
+          <div class="info-value"><a href="mailto:ironmarkgear@gmail.com">ironmarkgear@gmail.com</a></div>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Numéro de TVA</span>
+          <div class="info-value">BE 1031.321.222</div>
+        </div>
+
+        <div class="notice">
+          <strong>Important :</strong> merci d’envoyer un message en priorité, idéalement via WhatsApp.
+          Indiquez directement le type de demande, la commune, les photos si possible, les dimensions approximatives,
+          les délais souhaités et toute information utile. Si nécessaire, je vous recontacterai moi-même par téléphone.
+        </div>
+
+        <div class="actions">
+          <a class="action-btn whatsapp" href="https://wa.me/32492867023" target="_blank" rel="noopener noreferrer"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5Z"/><path d="M9 8.8c.2 3 2.2 5.1 5.2 6 .6.2 1.3-.8 1.3-1.3 0-.3-.2-.5-.5-.6l-1.4-.6c-.3-.1-.6-.1-.8.2l-.4.5c-1-.5-1.8-1.2-2.4-2.3l.5-.4c.3-.2.3-.5.2-.8l-.6-1.4c-.1-.3-.3-.5-.6-.5-.5 0-1.5.6-1.5 1.2Z"/></svg> Envoyer un message WhatsApp</a>
+          <a class="action-btn email" href="mailto:ironmarkgear@gmail.com"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg> Envoyer un e-mail</a>
+          <a class="action-btn phone" href="sms:+32492867023"><svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2h9A3.5 3.5 0 0 1 20 5.5v7A3.5 3.5 0 0 1 16.5 16H10l-5 4v-4.5A3.5 3.5 0 0 1 4 12V5.5Z"/><path d="M8 8h8M8 12h5"/></svg> Envoyer un SMS</a>
+        </div>
+      </div>
+
+      <div class="card message-card">
+        <h2>Préparer votre demande</h2>
+
+        <div class="form-placeholder">
+          <div class="field">Type de demande : bâtiment, location de matériel ou espaces verts</div>
+          <div class="field">Votre commune / zone d’intervention</div>
+          <div class="field">Description courte du besoin</div>
+          <div class="field">Photos ou informations utiles à envoyer via WhatsApp ou e-mail</div>
+        </div>
+
+        <div class="placeholder-note">
+          Les champs ci-dessus servent d’exemple pour préparer votre demande.
+          Pour accéder au vrai formulaire de demande de devis, cliquez sur le bouton ci-dessous.
+          <br>
+          <a class="devis-inline-btn" href="devis.html#formulaire-devis">Accéder au formulaire de devis</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="legal-note">
+      L’adresse privée n’est pas affichée publiquement sur cette page. Le numéro de TVA est indiqué ci-dessus pour l’identification professionnelle de la société.
+    </div>
+  </main>
+
+  <footer>
+    © 2026 IronMarkGear — Contact
+  </footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

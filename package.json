@@ -1,0 +1,24 @@
+{
+  "name": "ironmarkgear-next-v114",
+  "version": "0.114.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "typescript": "latest"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  }
+}

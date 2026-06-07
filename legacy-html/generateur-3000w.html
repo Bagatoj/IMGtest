@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Générateur essence 3000 W | IronMarkGear</title><style>
+:root{--bleu:#0878c9;--bleu-fonce:#004783;--jaune:#ffc928;--jaune-fonce:#d99a00;--texte:#1f2d3d;--fond:#f4f6f8;--bleu-nuit:#243646;}*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--fond);color:var(--texte)}.top-bar{height:28px;background:var(--bleu-nuit)}header{background:white;min-height:86px;padding:0 8%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 3px 16px rgba(0,0,0,.12);position:sticky;top:0;z-index:10}.logo{display:flex;align-items:center;gap:12px;font-size:24px}.logo-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--jaune),var(--jaune-fonce));color:white;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900}nav{display:flex;align-items:center;gap:28px}nav a{text-decoration:none;color:var(--texte);font-size:16px;font-weight:600}nav a:hover{color:#b77d00}nav a.btn-devis,nav a.btn-devis:hover{color:white}.btn-devis{background:linear-gradient(180deg,var(--jaune),var(--jaune-fonce));color:white;padding:14px 22px;border-radius:7px;box-shadow:0 5px 10px rgba(0,0,0,.18)}main{padding:44px 7% 64px}.product{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start}.photo,.content{background:white;border-radius:18px;box-shadow:0 14px 32px rgba(30,40,50,.12);border-top:8px solid var(--jaune);overflow:hidden}.photo img{width:100%;height:520px;object-fit:contain;background:white;display:block;padding:18px}.content{padding:18px}h1{margin:0 0 12px;font-size:clamp(34px,4vw,54px);line-height:1.08}p{color:#526171;line-height:1.55}.price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0}.price{background:#fff8dc;border-left:5px solid var(--jaune);border-radius:10px;padding:12px;font-weight:900;color:#856100}.box{background:#f8fafc;border-radius:12px;padding:16px;margin-top:16px}.box h3{margin:0 0 10px}.box ul{margin:0;padding-left:20px;color:#526171;line-height:1.55}.booking{background:#fff8dc;border-left:6px solid var(--jaune);border-radius:12px;padding:16px;margin-top:18px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin:10px 0}.calendar-head button,.calendar-actions button{border:0;border-radius:8px;padding:9px 12px;font-weight:900;cursor:pointer;background:white;color:#856100}.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.day-name{text-align:center;font-weight:900;color:#856100;font-size:13px;padding:6px}.day{border:0;border-radius:9px;min-height:38px;background:white;cursor:pointer;font-weight:800;color:var(--texte)}.day:hover{background:#fff1b8}.day.disabled{opacity:.35;cursor:not-allowed;background:#f1f1f1;color:#999}.day.empty{background:transparent;cursor:default}.day.selected{background:var(--jaune);color:#553c00}.day.in-range{background:#ffe58a;color:#553c00;border-radius:0}.calendar-actions{display:flex;gap:10px;margin-top:12px}.summary{font-weight:900;color:#856100;margin-top:12px}.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}.actions a,.actions button{border:0;border-radius:10px;padding:15px;text-align:center;text-decoration:none;font-weight:900;font:inherit;cursor:pointer}.primary{background:linear-gradient(180deg,var(--jaune),var(--jaune-fonce));color:white}.secondary{background:#eef5fb;color:var(--texte)}.quote-highlight{animation:pulseQuote 1.15s ease 3;box-shadow:0 0 0 5px rgba(198,40,40,.30)!important;border:3px solid #c62828!important}@keyframes pulseQuote{0%,100%{background:#eef5fb;color:var(--texte)}50%{background:#ffe9e9;color:#b42323}}.selected-ranges{margin-top:12px;display:grid;gap:8px}.selected-range{background:white;border-left:5px solid var(--jaune);border-radius:10px;padding:10px;font-weight:800;color:#856100}footer{margin-top:60px;background:var(--bleu-nuit);color:white;text-align:center;padding:24px 7%;font-size:14px}@media(max-width:950px){header{padding:18px 6%;flex-direction:column;gap:20px}nav{flex-wrap:wrap;justify-content:center}.product{grid-template-columns:1fr}.photo img{height:auto}.actions{grid-template-columns:1fr}}
+
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: #0f8a3b;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 900;
+  box-shadow: 0 14px 32px rgba(0,0,0,.22);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s ease;
+  z-index: 9999;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.error { background: #c62828; }
+.toast.warning { background: #d98a00; }
+
+
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#fff06a 0%,#ffc107 42%,#c87800 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.48), inset 0 -10px 18px rgba(110,70,0,.25), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style><style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head><body class="theme-rental"><div class="top-bar"></div><header><div class="logo"><div class="logo-icon">IMG</div><div><strong>IronMark</strong>Gear</div></div><nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis" href="devis.html">Demande de devis</a>
+    </nav></header><main><div class="product-back-top"><a class="back-to-catalog" href="/location-materiel" onclick="backToLocation(event)">← Retour au catalogue</a></div><section class="product"><div class="photo"><img src="assets/generateur-3000w.png" alt="Générateur essence 3000 W"></div><div class="content"><h1>Générateur essence 3000 W</h1><p>Générateur de courant à essence pour chantier, dépannage, événement ou alimentation temporaire de matériel.</p><div class="price-grid"><div class="price stock-warning">En location actuellement<br>Disponible dès le 01/06</div><div class="price">à partir de 8,93 €/jour</div><div class="price">1 jour : 30 €</div><div class="price">Week-end : 50 €</div><div class="price">1 semaine : 100 €</div><div class="price">2 semaines : 150 €</div><div class="price">3 semaines : 210 €</div><div class="price">4 semaines : 250 €</div><div class="price">Caution : 250 €</div><div class="price">Prix HTVA</div></div><p><strong>Livraison gratuite sur Bruxelles à partir d’une semaine de location.</strong></p><div class="booking"><h3>Choisir les dates</h3><p>Choisissez la date de début puis la date de fin directement dans le calendrier.</p><div class="calendar-head"><button onclick="changeMonth(-1)">‹</button><strong id="monthLabel"></strong><button onclick="changeMonth(1)">›</button></div><div class="calendar-grid" id="calendarGrid"></div><div class="calendar-actions"><button onclick="clearDates()">Effacer</button><button onclick="validateDates()">Valider les dates</button><button onclick="addAnotherRange()">Ajouter une autre date</button></div><div class="summary" id="priceSummary">Aucune période sélectionnée.</div><div class="selected-ranges" id="selectedRanges"></div></div><div class="box"><h3>Caractéristiques</h3><ul><li>Puissance annoncée : 3000 W.</li><li>Motorisation essence.</li><li>Utilisation extérieure ou zone très ventilée uniquement.</li><li>Prévoir carburant et contrôle du niveau d’huile.</li><li>Respecter la puissance maximale supportée par le générateur.</li></ul></div><div class="box"><h3>Méthode d’utilisation</h3><ul><li>Installer le générateur sur une surface stable.</li><li>Ne jamais utiliser dans un espace fermé à cause des gaz d’échappement.</li><li>Vérifier carburant, huile et charge connectée avant utilisation.</li><li>Brancher les appareils progressivement.</li></ul></div><div class="stock-alert-box"><strong>Alerte retour disponible</strong><p>Entrez votre email pour être averti 1 jour avant le retour du générateur, ainsi que le jour J de sa remise en service.</p><div class="stock-alert-form"><input id="stockAlertEmail" type="email" placeholder="Votre adresse email"><button type="button" onclick="registerStockAlert()">Recevoir une alerte</button></div></div><div class="actions"><a class="primary" href="https://wa.me/p/25497494993247059/32492867023" target="_blank" rel="noopener noreferrer">Réserver via WhatsApp</a><button class="primary" onclick="addWithDates()">Ajouter au panier</button><button class="secondary" id="quoteButton" onclick="addQuoteOnly()">Ajouter au panier pour un devis</button></div></div></section></main><footer>© 2026 IronMarkGear — Générateur essence 3000 W</footer><script>
+
+function showToast(message, type="success") {
+  let toast = document.getElementById("toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast";
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.className = "toast show " + type;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => {
+    toast.className = "toast " + type;
+  }, 2400);
+}
+
+
+function backToLocation(event){
+  event.preventDefault();
+  try{
+    const saved=JSON.parse(localStorage.getItem('img_location_filters')||'{}');
+    const params=new URLSearchParams();
+    if(saved.search) params.set('q', saved.search);
+    if(saved.category) params.set('cat', saved.category);
+    if(saved.status) params.set('status', saved.status);
+    window.location.href='/location-materiel'+(params.toString()?`?${params}`:'');
+  }catch{ window.location.href='/location-materiel'; }
+}
+
+const product={id:"generateur-3000w",title:"G\u00e9n\u00e9rateur essence 3000 W",image:"assets/generateur-3000w.png",daily:30,weekend:50,week1:100,week2:150,week3:210,week4:250,stock:0,unavailableUntil:"2026-06-01",availableFromLabel:"01/06"};
+function getTodayISO() {
+  // Version locale temporaire avant backend : date du jour au format YYYY-MM-DD.
+  // En production, cette valeur devra être fournie par le serveur.
+  const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 10);
+}
+function isDateUnavailable(iso){
+  return product.unavailableUntil && iso < product.unavailableUntil;
+}
+function explainAvailability(){
+  return `Cette machine est déjà en location jusqu'au ${product.availableFromLabel}. Sélectionnez une date à partir du ${product.availableFromLabel}.`;
+}
+let current=new Date(getTodayISO()); current.setDate(1); 
+let startDate=null; 
+let endDate=null; 
+let datesValidated=false;
+let selectedRanges=[];
+const names=["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+
+function localISO(d) {
+  const x=new Date(d.getTime()-d.getTimezoneOffset()*60000);
+  return x.toISOString().slice(0,10);
+}
+
+function daysBetween(s,e) {
+  if(!s||!e) return 0;
+  const d1=new Date(s);
+  const d2=new Date(e);
+  const diff=Math.ceil((d2-d1)/(1000*60*60*24));
+  return diff>0 ? diff : 0;
+}
+
+function calcPrice(days) {
+  if(days<=0) return 0;
+  if(days<=1) return product.daily;
+  if(days<=3) return product.weekend;
+  if(days<=7) return product.week1;
+  if(days<=14) return product.week2;
+  if(days<=21) return product.week3;
+  return product.week4;
+}
+
+function renderCalendar() {
+  const grid=document.getElementById("calendarGrid");
+  const monthLabel=document.getElementById("monthLabel");
+  const year=current.getFullYear();
+  const month=current.getMonth();
+  monthLabel.textContent=current.toLocaleDateString("fr-BE",{month:"long",year:"numeric"});
+  let html=names.map(n=>`<div class="day-name">${n}</div>`).join("");
+  const first=new Date(year,month,1);
+  let offset=(first.getDay()+6)%7;
+  for(let i=0;i<offset;i++) html+='<button class="day empty" disabled></button>';
+  const count=new Date(year,month+1,0).getDate();
+  for(let day=1;day<=count;day++) {
+    const d=new Date(year,month,day);
+    const iso=localISO(d);
+    let cls="day";
+    const isPast = iso < getTodayISO();
+    const unavailable = isDateUnavailable(iso);
+    if(isPast || unavailable) cls += " disabled";
+    if(startDate&&iso===startDate) cls+=" selected";
+    if(endDate&&iso===endDate) cls+=" selected";
+    if(startDate&&endDate&&iso>startDate&&iso<endDate) cls+=" in-range";
+    selectedRanges.forEach(r=>{ if(iso>=r.startDate&&iso<=r.endDate) cls+=" in-range"; });
+    html+=`<button class="${cls}" ${(isPast || unavailable) ? "disabled" : ""} title="${unavailable ? explainAvailability() : ''}" onclick="selectDate('${iso}')">${day}</button>`;
+  }
+  grid.innerHTML=html;
+  updateSummary();
+  renderRanges();
+}
+
+function selectDate(iso) {
+  if(isDateUnavailable(iso)) { showToast(explainAvailability(), "warning"); return; }
+  datesValidated=false;
+  if(!startDate||endDate) {
+    startDate=iso;
+    endDate=null;
+  } else {
+    if(iso<startDate) {
+      endDate=startDate;
+      startDate=iso;
+    } else {
+      endDate=iso;
+    }
+  }
+  renderCalendar();
+}
+
+function changeMonth(step) {
+  current.setMonth(current.getMonth()+step);
+  renderCalendar();
+}
+
+function clearDates() {
+  startDate=null;
+  endDate=null;
+  datesValidated=false;
+  showToast("Dates effacées", "warning");
+  renderCalendar();
+}
+
+function validateDates() {
+  if((startDate && isDateUnavailable(startDate)) || (endDate && isDateUnavailable(endDate))) { showToast(explainAvailability(), "error"); return; }
+  if(!startDate||!endDate) {
+    showDateReminder();
+    return;
+  }
+  datesValidated=true;
+  updateSummary();
+  showToast("Dates validées ✓", "success");
+}
+
+function addAnotherRange() {
+  if(!startDate||!endDate) {
+    showDateReminder();
+    return;
+  }
+  const days=daysBetween(startDate,endDate);
+  selectedRanges.push({
+    startDate,
+    endDate,
+    days,
+    price:calcPrice(days)
+  });
+  startDate=null;
+  endDate=null;
+  datesValidated=false;
+  showToast("Période ajoutée ✓", "success");
+  renderCalendar();
+}
+
+function renderRanges() {
+  const root=document.getElementById("selectedRanges");
+  if(!root) return;
+  root.innerHTML = selectedRanges.map((r,idx)=>`
+    <div class="selected-range">
+      Période ${idx+1} : ${r.startDate} → ${r.endDate} — ${r.days} jour(s) — ${r.price} € HTVA
+      <button style="float:right;border:0;background:#ffe9e9;color:#b42323;border-radius:7px;padding:4px 8px;cursor:pointer" onclick="removeRange(${idx})">Retirer</button>
+    </div>
+  `).join("");
+}
+
+function removeRange(idx) {
+  selectedRanges.splice(idx,1);
+  showToast("Période retirée", "warning");
+  renderCalendar();
+}
+
+function updateSummary() {
+  const days=daysBetween(startDate,endDate);
+  const price=calcPrice(days);
+  document.getElementById("priceSummary").textContent=days
+    ? `Période en cours : ${startDate} → ${endDate} (${days} jour(s)) — coût estimé : ${price} € HTVA${datesValidated?" — dates validées":""}.`
+    : "Aucune période en cours.";
+  return {days,price};
+}
+
+function showDateReminder() {
+  showToast("Sélectionnez une date ou cliquez sur « Ajouter au panier pour un devis ».", "error");
+  const btn=document.getElementById("quoteButton");
+  if(btn) {
+    btn.classList.remove("quote-highlight");
+    void btn.offsetWidth;
+    btn.classList.add("quote-highlight");
+  }
+}
+
+function addOneToCart(range) {
+  const cart=JSON.parse(localStorage.getItem("img_cart")||"[]");
+  cart.push({
+    lineId: Date.now().toString()+Math.random().toString(16).slice(2),
+    id:product.id,
+    title:product.title,
+    image:product.image,
+    quantity:1,
+    startDate:range.startDate,
+    endDate:range.endDate,
+    days:range.days,
+    price:range.price,
+    quoteOnly:false,
+    needsDuration:false
+  });
+  localStorage.setItem("img_cart",JSON.stringify(cart));
+}
+
+function addWithDates() {
+  const ranges=[...selectedRanges];
+  if((startDate && isDateUnavailable(startDate)) || (endDate && isDateUnavailable(endDate)) || selectedRanges.some(r=>isDateUnavailable(r.startDate)||isDateUnavailable(r.endDate))) { showToast(explainAvailability(), "error"); return; }
+  if(startDate&&endDate) {
+    if(!datesValidated) {
+      showToast("Validez les dates avant d’ajouter au panier.", "warning");
+      return;
+    }
+    const info=updateSummary();
+    ranges.push({startDate,endDate,days:info.days,price:info.price});
+  }
+  if(!ranges.length) {
+    showDateReminder();
+    return;
+  }
+  ranges.forEach(addOneToCart);
+  selectedRanges=[];
+  startDate=null;
+  endDate=null;
+  datesValidated=false;
+  showToast("Ajouté au panier ✓", "success");
+  renderCalendar();
+}
+
+function registerStockAlert(){
+  const email=(document.getElementById("stockAlertEmail")||{}).value||"";
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast("Entrez une adresse email valide.", "error");return;}
+  const alerts=JSON.parse(localStorage.getItem("img_stock_alerts")||"[]");
+  alerts.push({productId:product.id,productTitle:product.title,email,availableFrom:product.unavailableUntil,reminderDate:"2026-05-31",createdAt:new Date().toISOString()});
+  localStorage.setItem("img_stock_alerts",JSON.stringify(alerts));
+  showToast("Alerte enregistrée : vous serez averti 1 jour avant et le jour J.", "success");
+}
+
+function addQuoteOnly() {
+  const cart=JSON.parse(localStorage.getItem("img_cart")||"[]");
+  cart.push({
+    lineId: Date.now().toString()+Math.random().toString(16).slice(2),
+    id:product.id,
+    title:product.title,
+    image:product.image,
+    quantity:1,
+    startDate:"",
+    endDate:"",
+    days:0,
+    price:0,
+    quoteOnly:true,
+    needsDuration:true
+  });
+  localStorage.setItem("img_cart",JSON.stringify(cart));
+  showToast("Ajouté au devis ✓", "success");
+}
+
+renderCalendar();
+</script>
+<script src="assets/js/app.js"></script>
+</body></html>

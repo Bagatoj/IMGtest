@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demande de devis | IronMarkGear</title>
+
+  <style>
+    :root {
+      --bleu: #0878c9;
+      --jaune: #ffc928;
+      --vert: #39a935;
+      --texte: #1f2d3d;
+      --fond: #f4f6f8;
+      --blanc: #ffffff;
+      --bleu-nuit: #243646;
+      --accent: #0878c9;
+      --accent-fonce: #004783;
+    }
+
+    * { box-sizing: border-box; }
+body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--fond);
+      color: var(--texte);
+    }
+
+    .top-bar {
+      height: 28px;
+      background: var(--bleu-nuit);
+    }
+
+    header {
+      background: var(--blanc);
+      min-height: 86px;
+      padding: 0 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 16px rgba(0,0,0,.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--bleu-nuit));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--texte);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.btn-devis,
+    nav a.btn-devis.active,
+    nav a.btn-devis:hover {
+      color: white;
+    }
+
+    .btn-devis,
+    .btn-devis.active {
+      background: var(--accent);
+      color: white;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 7px;
+      box-shadow: 0 5px 10px rgba(0,0,0,.18);
+    }
+
+    main {
+      padding: 44px 7% 64px;
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 20px;
+      color: #526171;
+      line-height: 1.5;
+    }
+
+    .faq-reminder {
+      max-width: 1120px;
+      margin: 0 auto 28px;
+      background: #eef5fb;
+      border-left: 6px solid var(--bleu);
+      border-radius: 14px;
+      padding: 20px 22px;
+      color: #425363;
+      font-size: 18px;
+      line-height: 1.5;
+      box-shadow: 0 10px 24px rgba(30,40,50,.08);
+    }
+
+    .faq-reminder a {
+      color: var(--accent-fonce);
+      font-weight: 900;
+    }
+
+    .devis-layout {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 14px 32px rgba(30,40,50,.12);
+    }
+
+    .method-card {
+      border-top: 8px solid var(--accent);
+    }
+
+    .form-card {
+      border-top: 8px solid var(--bleu);
+    }
+
+    h2 {
+      margin: 0 0 22px;
+      font-size: 30px;
+    }
+
+    
+    .method-options {
+      display: grid;
+      gap: 14px;
+    }
+
+    .method {
+      position: relative;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 16px;
+      align-items: center;
+      border: 1px solid #d9e2ea;
+      border-radius: 14px;
+      padding: 18px;
+      cursor: pointer;
+      background: #fbfcfd;
+      transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease, background 220ms ease;
+    }
+
+    .method:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 24px rgba(30,40,50,.10);
+      transform: translateY(-2px);
+      background: white;
+    }
+
+    .method input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .method-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef5fb;
+      color: var(--accent);
+      font-size: 25px;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px rgba(8,120,201,.14);
+    }
+
+    .method-text strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 18px;
+      color: var(--texte);
+    }
+
+    .method-text span {
+      color: #526171;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .method input:checked ~ .method-icon {
+      background: linear-gradient(180deg, var(--accent), var(--accent-fonce));
+      color: white;
+      box-shadow: 0 8px 18px rgba(8,120,201,.22);
+    }
+
+    .method:has(input:checked) {
+      border-color: var(--accent);
+      background: #f4faff;
+      box-shadow: 0 10px 24px rgba(8,120,201,.12);
+    }
+
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    label {
+      font-weight: 800;
+      color: var(--texte);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      margin-top: 7px;
+      padding: 14px 15px;
+      border: 1px solid #d4dce4;
+      border-radius: 9px;
+      font: inherit;
+      background: #fbfcfd;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .machine-rental-fields {
+      background: #fff8dc;
+      border-left: 6px solid var(--jaune);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .machine-rental-fields h3 {
+      margin: 0 0 8px;
+    }
+
+    .machine-row button,
+    .remove-all-machines,
+    .remove-machine-btn {
+      border: 0;
+      background: #ffe9e9;
+      color: #b42323;
+      border-radius: 9px;
+      padding: 10px 12px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .machine-row {
+      align-items: center;
+    }
+
+    .remove-all-machines {
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .submit-btn {
+      border: 0;
+      background: linear-gradient(180deg, var(--accent), var(--accent-fonce));
+      color: white;
+      padding: 16px 24px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,.18);
+    }
+
+    .note {
+      color: #6d7a86;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,20,30,.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 560px;
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+      border-top: 8px solid var(--accent);
+    }
+
+    .modal-content h2 {
+      margin-bottom: 14px;
+    }
+
+    .modal-content p {
+      color: #526171;
+      line-height: 1.55;
+    }
+
+    .modal-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .modal-actions a,
+    .modal-actions button {
+      border: 0;
+      border-radius: 10px;
+      padding: 15px 18px;
+      font-size: 17px;
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-actions a {
+      background: var(--accent);
+      color: white;
+    }
+
+    .modal-actions button {
+      background: #eef5fb;
+      color: var(--texte);
+    }
+
+    footer {
+      margin-top: 60px;
+      background: var(--bleu-nuit);
+      color: white;
+      text-align: center;
+      padding: 24px 7%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 950px) {
+      header {
+        padding: 22px 6%;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .devis-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+/* V52.1 logo gradient theme override */
+.logo-icon{
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  border-radius:10px!important;
+  background:linear-gradient(135deg,#5fc5ff 0%,#1e73be 42%,#003b73 100%)!important;
+  color:#fff!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:18px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  letter-spacing:-.5px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42), inset 0 -10px 18px rgba(0,0,0,.22), 0 8px 18px rgba(0,0,0,.16)!important;
+}
+
+</style>
+<style>
+.logo-icon{
+width:46px!important;
+height:46px!important;
+border-radius:10px!important;
+background:linear-gradient(135deg,#1e73be,#0b4f8a)!important;
+color:#fff!important;
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:18px!important;
+font-weight:900!important;
+flex-shrink:0;
+}
+header{position:relative!important;top:auto!important}
+</style>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="theme-common">
+  <div class="top-bar"></div>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">IMG</div>
+      <div><strong>IronMark</strong>Gear</div>
+    </div>
+
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="panier.html">Panier</a>
+      <a class="btn-devis active" href="devis.html">Demande de devis</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Demande de devis</h1>
+      <p>Expliquez votre besoin simplement afin que je puisse vous répondre avec les bonnes informations.</p>
+    </section>
+
+    <div class="faq-reminder">
+      Avant d’envoyer votre demande, avez-vous consulté la <a href="faq.html">FAQ</a> ? Elle répond déjà aux questions les plus fréquentes sur les délais, les prestations, Ring Twice, la location et les demandes de travaux.
+    </div>
+
+    <section class="devis-layout">
+      <div class="card method-card">
+        <h2>Mode de contact souhaité</h2>
+
+        <div class="method-options">
+          <label class="method">
+            <input type="radio" name="contactMethod" value="sms" onclick="openSmsModal()">
+            <div class="method-icon">💬</div>
+            <div class="method-text">
+              <strong>Message / WhatsApp</strong>
+              <span>Recommandé pour une demande rapide avec photos.</span>
+            </div>
+          </label>
+
+          <label class="method">
+            <input type="radio" name="contactMethod" value="mail" checked onclick="showMailForm()">
+            <div class="method-icon">✉</div>
+            <div class="method-text">
+              <strong>Formulaire / e-mail</strong>
+              <span>Idéal pour une demande détaillée.</span>
+            </div>
+          </label>
+        </div>
+
+        <p class="note">
+          Priorité aux messages écrits : cela permet de garder une trace claire de la demande et d’éviter les oublis.
+        </p>
+      </div>
+
+      <div id="formulaire-devis" class="card form-card">
+        <h2>Informations pour le devis</h2>
+
+        <form action="mailto:ironmarkgear@gmail.com" method="post" enctype="text/plain">
+          <label>
+            Vous êtes
+            <select name="Type de client" id="clientTypeDevis" onchange="toggleVatDevis()">
+              <option value="Particulier">Particulier</option>
+              <option value="Professionnel">Professionnel / société</option>
+            </select>
+          </label>
+
+          <div id="vatDevisBlock" style="display:none;">
+            <label>
+              Numéro de TVA
+              <input type="text" name="Numéro de TVA" placeholder="BE ...">
+            </label>
+          </div>
+
+          <label>
+            <span id="devisNameLabel">Nom complet</span>
+            <input type="text" name="Nom" placeholder="Votre nom ou personne de référence" required>
+          </label>
+
+          <label>
+            Téléphone
+            <input type="tel" name="Téléphone" placeholder="+32 ..." required>
+          </label>
+
+          <label>
+            E-mail
+            <input type="email" name="Email" placeholder="votre@email.com" required>
+          </label>
+
+          <label>
+            Adresse ou commune du chantier
+            <input type="text" name="Adresse ou commune" placeholder="Commune, rue ou zone d’intervention">
+          </label>
+
+          <label>
+            Type de service
+            <select name="Service" id="serviceSelect" required onchange="toggleMachineRental()">
+              <option value="">Choisir un service</option>
+              <option>Peinture</option>
+              <option>Rénovation</option>
+              <option>Électricité</option>
+              <option>Plomberie</option>
+              <option>Bâtiment général</option>
+              <option>Location de matériel</option>
+              <option>Jardinage / espaces verts</option>
+              <option>Pose de gazon en rouleau</option>
+              <option>mini-pelle / préparation de terrain</option>
+              <option>Autre demande</option>
+            </select>
+          </label>
+
+          <div class="machine-rental-fields" id="machineRentalFields" style="display:none;">
+            <h3>Machines souhaitées</h3>
+            <p class="note">Ajoutez autant de machines que nécessaire. Un nouveau champ vide apparaît automatiquement après votre dernier choix.</p>
+            <div id="machineRows"></div>
+            <button class="remove-all-machines" id="clearMachinesButton" type="button" onclick="clearMachineRows()" style="display:none;">Tout supprimer</button>
+          </div>
+
+          <label>
+            Description de la demande
+            <textarea name="Description" placeholder="Décrivez votre besoin, les dimensions approximatives, les délais souhaités, les contraintes éventuelles..."></textarea>
+          </label>
+
+          <button class="submit-btn" type="submit">Envoyer la demande</button>
+
+          <p class="note">
+            Ce formulaire ouvre votre application e-mail pour l’instant. Un formulaire automatisé sera ajouté plus tard quand le site sera hébergé.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="smsModal" onclick="closeSmsModal(event)">
+    <div class="modal-content">
+      <h2>Contact par message</h2>
+      <p>
+        Merci d’envoyer votre demande en priorité par WhatsApp si possible.
+        Indiquez le type de service, la commune, les photos, les dimensions approximatives, les délais souhaités et toute information utile.
+      </p>
+      <p>
+        Téléphone : <strong>+32 492 86 70 23</strong><br>
+        Si nécessaire, je vous recontacterai moi-même par téléphone.
+      </p>
+
+      <div class="modal-actions">
+        <a href="https://wa.me/32492867023" target="_blank" rel="noopener noreferrer">Envoyer un message WhatsApp</a>
+        <a href="sms:+32492867023">Envoyer un SMS</a>
+        <button type="button" onclick="closeSmsModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 IronMarkGear — Demande de devis
+  </footer>
+
+  <script>
+    function openSmsModal() {
+      document.getElementById("smsModal").classList.add("active");
+    }
+
+    function closeSmsModal(event) {
+      if (!event || event.target.id === "smsModal" || event.target.tagName === "BUTTON") {
+        document.getElementById("smsModal").classList.remove("active");
+      }
+    }
+
+    function showMailForm() {
+      document.getElementById("formulaire-devis").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        document.getElementById("smsModal").classList.remove("active");
+      }
+    });
+
+    const machineOptions = [
+      "Déshumidificateur de chantier Dryfast DF800",
+      "Générateur essence 3000 W"
+    ];
+
+    function toggleVatDevis() {
+      const isPro = document.getElementById("clientTypeDevis")?.value === "Professionnel";
+      const vat = document.getElementById("vatDevisBlock");
+      const label = document.getElementById("devisNameLabel");
+      if (vat) vat.style.display = isPro ? "block" : "none";
+      if (label) label.textContent = isPro ? "Personne de référence" : "Nom complet";
+    }
+
+    function toggleMachineRental() {
+      const service = document.getElementById("serviceSelect").value;
+      const box = document.getElementById("machineRentalFields");
+      if (!box) return;
+      const isRental = service.toLowerCase().includes("location");
+      box.style.display = isRental ? "block" : "none";
+      if (isRental && document.querySelectorAll(".machine-row").length === 0) {
+        addMachineRow();
+      }
+    }
+
+    function addMachineRow() {
+      const root = document.getElementById("machineRows");
+      const row = document.createElement("div");
+      row.className = "machine-row";
+      row.style.display = "grid";
+      row.style.gridTemplateColumns = "1fr 120px auto";
+      row.style.gap = "10px";
+      row.style.marginBottom = "10px";
+      row.innerHTML = `
+        <select name="Machine souhaitée" onchange="handleMachineChange(this)">
+          <option value="">Choisir une machine</option>
+          ${machineOptions.map(m => `<option>${m}</option>`).join("")}
+        </select>
+        <select name="Quantité" class="quantity-select" style="display:none;">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+        <button class="remove-machine-btn" type="button" style="display:none;" onclick="removeMachineRow(this)">Supprimer</button>
+      `;
+      root.appendChild(row);
+    }
+
+    function handleMachineChange(select) {
+      const row = select.closest(".machine-row");
+      const quantity = row.querySelector(".quantity-select");
+      const remove = row.querySelector(".remove-machine-btn");
+      const hasValue = Boolean(select.value);
+      if (quantity) quantity.style.display = hasValue ? "block" : "none";
+      if (remove) remove.style.display = hasValue ? "block" : "none";
+      ensureEmptyMachineRow();
+      updateMachineControlsVisibility();
+    }
+
+    function removeMachineRow(button) {
+      button.closest(".machine-row").remove();
+      ensureEmptyMachineRow();
+      updateMachineControlsVisibility();
+    }
+
+    function clearMachineRows() {
+      const root = document.getElementById("machineRows");
+      root.innerHTML = "";
+      addMachineRow();
+      updateMachineControlsVisibility();
+    }
+
+    function updateMachineControlsVisibility() {
+      const rows = Array.from(document.querySelectorAll(".machine-row"));
+      const selectedRows = rows.filter(row => {
+        const select = row.querySelector("select[name='Machine souhaitée']");
+        return select && select.value;
+      });
+
+      rows.forEach(row => {
+        const select = row.querySelector("select[name='Machine souhaitée']");
+        const quantity = row.querySelector(".quantity-select");
+        const remove = row.querySelector(".remove-machine-btn");
+        const hasValue = Boolean(select && select.value);
+
+        if (quantity) quantity.style.display = hasValue ? "block" : "none";
+        if (remove) remove.style.display = hasValue ? "block" : "none";
+      });
+
+      const clearButton = document.getElementById("clearMachinesButton");
+      if (clearButton) clearButton.style.display = selectedRows.length > 0 ? "block" : "none";
+    }
+
+    function ensureEmptyMachineRow() {
+      const rows = Array.from(document.querySelectorAll(".machine-row select[name='Machine souhaitée']"));
+      const hasEmpty = rows.some(select => !select.value);
+      if (!hasEmpty) addMachineRow();
+      if (rows.length === 0) addMachineRow();
+      updateMachineControlsVisibility();
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      toggleVatDevis();
+      toggleMachineRental();
+      updateMachineControlsVisibility();
+    });
+
+</script>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

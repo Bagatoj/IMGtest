@@ -1,0 +1,81 @@
+{
+  "badge": {
+    "fr": "LOCATION DE MATÉRIEL PROFESSIONNEL",
+    "en": "PROFESSIONAL EQUIPMENT RENTAL",
+    "nl": "PROFESSIONELE MATERIEELVERHUUR"
+  },
+  "title": {
+    "fr": "Performance et fiabilité",
+    "en": "Performance and reliability",
+    "nl": "Prestaties en betrouwbaarheid"
+  },
+  "description": {
+    "fr": "Du matériel professionnel, entretenu avec soin, pour garantir la réussite de tous vos chantiers, où que vous soyez.",
+    "en": "Professional equipment, carefully maintained, to help ensure the success of your projects wherever you are.",
+    "nl": "Professioneel materiaal, zorgvuldig onderhouden, om het succes van uw projecten te garanderen, waar u ook bent."
+  },
+  "features": [
+    {
+      "title": {
+        "fr": "Matériel professionnel",
+        "en": "Professional equipment",
+        "nl": "Professioneel materiaal"
+      },
+      "text": {
+        "fr": "Des équipements puissants et sélectionnés pour leur fiabilité et leur performance.",
+        "en": "Powerful equipment selected for reliability and performance.",
+        "nl": "Krachtig materiaal geselecteerd op betrouwbaarheid en prestaties."
+      },
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": {
+        "fr": "Entretien rigoureux",
+        "en": "Strict maintenance",
+        "nl": "Strikt onderhoud"
+      },
+      "text": {
+        "fr": "Chaque machine est contrôlée et entretenue avant chaque location.",
+        "en": "Every machine is checked and maintained before each rental.",
+        "nl": "Elke machine wordt vóór elke verhuur gecontroleerd en onderhouden."
+      },
+      "icon": "BadgeCheck"
+    },
+    {
+      "title": {
+        "fr": "Conseils d’experts",
+        "en": "Expert advice",
+        "nl": "Deskundig advies"
+      },
+      "text": {
+        "fr": "Notre équipe vous accompagne pour choisir le matériel adapté à vos besoins.",
+        "en": "Our team helps you choose the right equipment for your needs.",
+        "nl": "Ons team helpt u het juiste materiaal voor uw behoeften te kiezen."
+      },
+      "icon": "Headphones"
+    },
+    {
+      "title": {
+        "fr": "Disponibilité rapide",
+        "en": "Fast availability",
+        "nl": "Snelle beschikbaarheid"
+      },
+      "text": {
+        "fr": "Retrait sur place ou livraison sur chantier, selon vos besoins.",
+        "en": "Pickup or delivery to site, depending on your needs.",
+        "nl": "Afhaling of levering op de werf, afhankelijk van uw behoeften."
+      },
+      "icon": "Truck"
+    }
+  ],
+  "cta": {
+    "fr": "Louer maintenant",
+    "en": "Rent now",
+    "nl": "Nu huren"
+  },
+  "bottomNote": {
+    "fr": "Paiement sécurisé et assurance incluse",
+    "en": "Secure payment and insurance included",
+    "nl": "Veilige betaling en verzekering inbegrepen"
+  }
+}
